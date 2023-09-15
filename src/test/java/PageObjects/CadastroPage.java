@@ -16,27 +16,27 @@ public class CadastroPage {
     }
 
     public WebElement btnRegistrar(){
-        return waits.visibilityOfElement(By.xpath("//button[contains(text(), 'Registrar') and contains(@class, 'style__ContainerButton')]"));
+        return waits.visibilityOfElement(By.xpath("//button[contains(text(), 'Registrar') and contains(@type, 'button')]"));
     }
 
     public WebElement getemail(){
-        return waits.visibilityOfElement(By.xpath("//form[@class='styles__ContainerFormRegister-sc-7fhc7g-0 keVbpY']//input[@type='email' and @class='input__default' and @name='email']"));
+        return waits.visibilityOfElement(By.xpath("//form[@class='styles__ContainerFormRegister-sc-7fhc7g-0 keVbpY']//div//input[@type='email' and @class='input__default' and @name='email']"));
     }
 
     public WebElement getNome(){
-        return waits.visibilityOfElement(By.xpath("//input[@placeholder='Informe seu Nome']"));
+        return waits.visibilityOfElement(By.xpath("//input[@name='name']"));
     }
 
     public WebElement getSenha(){
-        return waits.visibilityOfElement(By.xpath("//form[@class='styles__ContainerFormRegister-sc-7fhc7g-0 keVbpY']//input[@placeholder='Informe sua senha']"));
+        return waits.visibilityOfElement(By.xpath("//form[@class='styles__ContainerFormRegister-sc-7fhc7g-0 keVbpY']//div//div//input[@name='password']"));
     }
 
     public WebElement getconfirmaSenha(){
-        return waits.visibilityOfElement(By.xpath("//input[@placeholder='Informe a confirmação da senha']"));
+        return waits.visibilityOfElement(By.xpath("//div//input[@placeholder='Informe a confirmação da senha']"));
     }
 
     public WebElement getSaldo(){
-        return driver.findElement(By.xpath("//label[@id='toggleAddBalance']"));
+        return driver.findElement(By.xpath("//div//label//label[@id='toggleAddBalance']"));
     }
 
     public WebElement btnCadastrar(){
