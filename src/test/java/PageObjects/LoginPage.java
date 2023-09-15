@@ -23,15 +23,20 @@ public class LoginPage {
         return waits.visibilityOfElement(By.xpath("(//input[@type='password' and @class='input__default'])[1]"));
     }
 
-    public WebElement btnAcessar(){
+    public WebElement clicBotaoAcessar(){
         return waits.visibilityOfElement(By.xpath("//button[@type='submit' and @class='style__ContainerButton-sc-1wsixal-0 otUnI button__child']"));
     }
 
-    public WebElement txtBemVindo(){
+    public WebElement textoBemVindo(){
         return waits.visibilityOfElement(By.xpath("//p[contains(text(), 'bem vindo ao BugBank')]"));
     }
     public WebElement saldo(){
         return waits.visibilityOfElement((By.xpath("//p[@id= 'textBalance']")));
+    }
+
+    public WebElement saldoSegundaConta(){
+        return waits.visibilityOfElement((By.xpath("//div//div//p[@id='textBalance']//span")));
+
     }
 
 }

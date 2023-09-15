@@ -15,7 +15,7 @@ public class CadastroPage {
         waits = new Waits(this.driver);
     }
 
-    public WebElement btnRegistrar(){
+    public WebElement clicBotaoRegistrar(){
         return waits.visibilityOfElement(By.xpath("//button[contains(text(), 'Registrar') and contains(@type, 'button')]"));
     }
 
@@ -35,11 +35,11 @@ public class CadastroPage {
         return waits.visibilityOfElement(By.xpath("//div//input[@placeholder='Informe a confirmação da senha']"));
     }
 
-    public WebElement getSaldo(){
+    public WebElement getCriarContaComSaldo(){
         return driver.findElement(By.xpath("//div//label//label[@id='toggleAddBalance']"));
     }
 
-    public WebElement btnCadastrar(){
+    public WebElement clicBotaoCadastrar(){
         return waits.visibilityOfElement(By.xpath("//button[normalize-space()='Cadastrar']"));
     }
 

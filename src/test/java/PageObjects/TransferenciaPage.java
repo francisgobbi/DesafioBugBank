@@ -59,7 +59,7 @@ public class TransferenciaPage {
         return waits.visibilityOfElement((By.xpath("//p[@id= 'textBalanceAvailable']")));
     }
 
-    public WebElement btnSair(){
+    public WebElement clicBotatoSair(){
         return waits.visibilityOfElement(By.id("btnExit"));
     }
 

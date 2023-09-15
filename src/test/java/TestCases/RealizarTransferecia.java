@@ -17,19 +17,13 @@ public class RealizarTransferecia extends TestBase{
 
 
     @Test
-    public void arealizarCadastro(){
+    public void arealizarCadastro() throws IOException {
         transferenciaTask.realizaCadastro1();
     }
 
     @Test
-    public void brealizarCadastro2() throws IOException {
-      transferenciaTask.realizarCadastro2();
-    }
-
-
-    @Test()
-    public void crealizarTransferencia() throws IOException {
-        transferenciaTask.realizarTransferencia();
+    public void brealizarCadastroeTransferencia() throws IOException {
+      transferenciaTask.realizarCadastroeTransferencia();
     }
 
     @Test()
