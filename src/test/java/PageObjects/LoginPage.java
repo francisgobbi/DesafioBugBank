@@ -39,4 +39,9 @@ public class LoginPage {
 
     }
 
+    public WebElement nameTitularConta(){
+        return waits.visibilityOfElement((By.xpath(" //div[@class='home__ContainerText-sc-1auj767-7 iDA-Ddb']//p[@id='textName']")));
+
+    }
+
 }

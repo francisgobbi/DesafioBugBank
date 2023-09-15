@@ -19,9 +19,15 @@ public class CadastroPage {
         return waits.visibilityOfElement(By.xpath("//button[contains(text(), 'Registrar') and contains(@type, 'button')]"));
     }
 
+    public WebElement getMailCadastro(){
+        return waits.visibilityOfElement(By.xpath(" //form[@class='style__ContainerFormLogin-sc-1wbjw6k-0 eTrcYr']//div//input[@type='email' and @class='input__default' and @name='email']\n"));
+    }
+
+
     public WebElement getemail(){
         return waits.visibilityOfElement(By.xpath("//form[@class='styles__ContainerFormRegister-sc-7fhc7g-0 keVbpY']//div//input[@type='email' and @class='input__default' and @name='email']"));
     }
+
 
     public WebElement getNome(){
         return waits.visibilityOfElement(By.xpath("//input[@name='name']"));
@@ -29,6 +35,10 @@ public class CadastroPage {
 
     public WebElement getSenha(){
         return waits.visibilityOfElement(By.xpath("//form[@class='styles__ContainerFormRegister-sc-7fhc7g-0 keVbpY']//div//div//input[@name='password']"));
+    }
+
+    public WebElement getSenhaCadastro(){
+        return waits.visibilityOfElement(By.xpath("//form[@class='style__ContainerFormLogin-sc-1wbjw6k-0 eTrcYr']//div//div//input[@name='password']"));
     }
 
     public WebElement getconfirmaSenha(){
@@ -41,6 +51,13 @@ public class CadastroPage {
 
     public WebElement clicBotaoCadastrar(){
         return waits.visibilityOfElement(By.xpath("//button[normalize-space()='Cadastrar']"));
+    }
+    public WebElement clicBotaoAcessar(){
+        return waits.visibilityOfElement(By.xpath("//button[@type='submit' and @class='style__ContainerButton-sc-1wsixal-0 otUnI button__child']"));
+    }
+
+    public WebElement clicBotaoAcessarCadastro(){
+        return waits.visibilityOfElement(By.xpath("//form[@class='style__ContainerFormLogin-sc-1wbjw6k-0 eTrcYr']//div//button[@type='submit']"));
     }
 
     public WebElement numeroDaConta(){
