@@ -34,6 +34,7 @@ public class TransferenciaTask {
         cadastroPage.getSaldo().click();
         cadastroPage.btnCadastrar().click();
         cadastroPage.numeroDaConta().getText();
+
         cadastroPage.btnFechar().click();
 
     }
@@ -92,11 +93,14 @@ public class TransferenciaTask {
         transferenciaPage.btnExtrato().click();
         transferenciaPage.saldoConta1().getText();
 
-        String saldoConta1 = transferenciaPage.saldoConta1().getText();
-        String[] splitSaldoConta1 = saldoConta1.split("-");
 
+        String saldoConta1 = transferenciaPage.saldoConta1().getText();
+        System.out.println("O Saldo da conta 1 é :" + saldoConta1);
+
+        String[] splitSaldoConta1 = saldoConta1.split("-");
         String saldoFormatado = splitSaldoConta1[0].replaceAll("[^0-9]", "");
         FilesOperation.setProperty("saldo", "saldoConta1", saldoFormatado);
+
         String validaSaldo1 = "R$ 1000,00";
         Assert.assertEquals(validaSaldo1,transferenciaPage.saldoConta1().getText());
 
@@ -109,11 +113,14 @@ public class TransferenciaTask {
         loginPage.getSenhaLogin().sendKeys("1234");
         loginPage.btnAcessar().click();
         loginPage.txtBemVindo().getText();
+
         String msg = "bem vindo ao BugBank :)";
         Assert.assertEquals(msg, loginPage.txtBemVindo().getText());
         loginPage.saldo().getText();
 
         String saldoConta2 = loginPage.saldo().getText();
+        System.out.println("O Saldo da conta 2 é :" + saldoConta2);
+
         String[] splitSaldoConta2 = saldoConta2.split("-");
 
         String saldoFormatado = splitSaldoConta2[0].replaceAll("[^0-9]", "");
