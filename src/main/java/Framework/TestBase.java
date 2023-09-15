@@ -20,14 +20,15 @@ public class TestBase extends DriverManager {
 
     @Before
     public void setUp()  throws IOException {
-        String URL = filesOperation.getProperties("url").getProperty("url.index");
+        String URL = filesOperation.getProperties("url").getProperty("url");
         getDriver().get(URL);
     }
 
     @AfterEach
     public void finish(){
-            quitDriver();
+            if (driver != null) {
+                driver.close();
+            }
+
     }
-
-
 }

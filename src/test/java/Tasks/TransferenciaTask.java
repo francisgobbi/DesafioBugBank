@@ -48,10 +48,9 @@ public class TransferenciaTask {
             throw new RuntimeException(e);
 
         }
-        System.out.println("Nome do Titular da Conta: Francis " );
-        System.out.println("Numero da Conta : " + numeroDaConta + "-" + digitoDaConta );
-        // Conta criada com saldo zerado
-        System.out.println("Saldo da Conta : " + cadastroPage.getCriarContaComSaldo().getText());
+        System.out.println("Nome do Titular da Conta: Francis" );
+        System.out.println(numeroDaConta);
+
         cadastroPage.btnFechar().click();
 
 
@@ -90,7 +89,7 @@ public class TransferenciaTask {
         transferenciaPage.btnTransferencia().click();
         transferenciaPage.numeroDaConta().sendKeys(numeroDaContaFormatado);
         transferenciaPage.digito().sendKeys(digitoDaConta);
-        transferenciaPage.valorDaTransferencia().sendKeys("1000");
+        transferenciaPage.valorDaTransferencia().sendKeys("850");
         transferenciaPage.descricao().sendKeys("Teste Transferencia Automatizada realizada com sucesso");
         transferenciaPage.btnTransferirAgora().click();
         transferenciaPage.txtTransferenciaRealizada().isDisplayed();
@@ -117,8 +116,8 @@ public class TransferenciaTask {
 
         String saldoConta = loginPage.saldoSegundaConta().getText();
         String nomeTitularConta = loginPage.nameTitularConta().getText();
-        System.out.println("Email do Titutlar da conta 2 é :" + nomeTitularConta );
-        System.out.println("O Saldo da conta 2 é :" + saldoConta);
+        //System.out.println("O nome do titular da conta é :" + nomeTitularConta );
+        //System.out.println("O saldo da conta atual é :" + saldoConta);
 
         String validaSaldo2 = "Saldo em conta " + saldoConta;
         Assert.assertEquals(validaSaldo2, loginPage.saldo().getText());
@@ -138,8 +137,8 @@ public class TransferenciaTask {
 
         String saldoConta = loginPage.saldoSegundaConta().getText();
         String nomeTitularConta = loginPage.nameTitularConta().getText();
-        System.out.println("Email do Titutlar da conta 2 é :" + nomeTitularConta );
-        System.out.println("O Saldo da conta 2 é :" + saldoConta);
+        System.out.println("O nome do titular da conta é :" + nomeTitularConta );
+        System.out.println("O Saldo da conta é :" + saldoConta);
 
         String validaSaldo2 = "Saldo em conta " + saldoConta;
         Assert.assertEquals(validaSaldo2, loginPage.saldo().getText());
