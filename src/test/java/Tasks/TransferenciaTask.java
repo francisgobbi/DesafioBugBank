@@ -144,7 +144,7 @@ public class TransferenciaTask {
         String validaSaldo2 = "Saldo em conta " + saldoConta;
         Assert.assertEquals(validaSaldo2, loginPage.saldo().getText());
 
-        transferenciaPage.btnExtrato();
+        transferenciaPage.btnExtrato().click();
     }
 
 }
