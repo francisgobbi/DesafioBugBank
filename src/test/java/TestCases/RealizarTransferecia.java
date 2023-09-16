@@ -1,5 +1,5 @@
 package TestCases;
-import Tasks.TransferenciaTask;
+import Tasks.TarefaTransferencia;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -8,18 +8,17 @@ import Framework.TestBase;
 
 import java.io.IOException;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 public class RealizarTransferecia extends TestBase{
 
     private WebDriver driver = getDriver();
-    TransferenciaTask transferenciaTask = new TransferenciaTask(driver);
+    TarefaTransferencia transferencia = new TarefaTransferencia(driver);
 
 
     @Test
     public void realizarCadastro() throws IOException {
         try {
-            transferenciaTask.realizaCadastro();
+            transferencia.realizaCadastro();
         }catch (Exception m){
             System.out.println(m);
         }
@@ -28,14 +27,21 @@ public class RealizarTransferecia extends TestBase{
     @Test
     public void realizarTransferencia() throws IOException {
       try {
-          transferenciaTask.realizarLogin();
-          transferenciaTask.realizarTransferencia();
-          transferenciaTask.realizarLoginResultado();
+          transferencia.realizarLogin();
+          transferencia.realizarTransferencia();
+
       }catch (Exception m){
           System.out.println(m);
         }
 
     }
-
+    @Test
+    public void validarResultados() throws IOException {
+        try {
+            transferencia.realizarLoginResultado();
+        }catch (Exception m){
+            System.out.println(m);
+        }
+    }
 
 }

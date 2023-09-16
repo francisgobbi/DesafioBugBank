@@ -28,7 +28,6 @@ public class CadastroPage {
         return waits.visibilityOfElement(By.xpath("//form[@class='styles__ContainerFormRegister-sc-7fhc7g-0 keVbpY']//div//input[@type='email' and @class='input__default' and @name='email']"));
     }
 
-
     public WebElement getNome(){
         return waits.visibilityOfElement(By.xpath("//input[@name='name']"));
     }
@@ -68,7 +67,7 @@ public class CadastroPage {
         return waits.visibilityOfElement(By.id("modalText"));
     }
 
-    public WebElement btnFechar(){
+    public WebElement clicBotaoFechar(){
         return waits.visibilityOfElement(By.xpath("//a[@id='btnCloseModal' and @class='styles__Button-sc-8zteav-5 gyHUvN']"));
     }
 }

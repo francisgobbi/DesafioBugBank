@@ -15,7 +15,7 @@ public class TransferenciaPage {
         waits = new Waits(this.driver);
     }
 
-    public WebElement btnTransferencia(){
+    public WebElement clicBotaoTransferencia(){
         return waits.visibilityOfElement(By.xpath("//div[@class='home__ContainerButton-sc-1auj767-14 ebzpKL'][1]"));
     }
 
@@ -35,23 +35,23 @@ public class TransferenciaPage {
         return waits.visibilityOfElement(By.xpath("//input[@class='input__default' and@name='description']"));
     }
 
-    public WebElement btnTransferirAgora(){
+    public WebElement clicBotaoTransferirAgora(){
         return waits.visibilityOfElement(By.xpath("//button[@class='style__ContainerButton-sc-1wsixal-0 CMabB button__child']"));
     }
 
-    public WebElement txtTransferenciaRealizada(){
+    public WebElement textoTransferenciaRealizada(){
         return waits.visibilityOfElement(By.xpath("//p[@class='styles__Text-sc-8zteav-4 gpcLtj']"));
     }
 
-    public WebElement btnFechar(){
+    public WebElement clicBotaoFechar(){
         return waits.visibilityOfElement(By.xpath("//a[@id='btnCloseModal' and contains(@class, 'styles__Button-sc-8zteav-5')]"));
     }
 
-    public WebElement btnVoltar(){
+    public WebElement clicBotaoVoltar(){
         return waits.visibilityOfElement(By.xpath("//a[@class='transfer__BackText-sc-1yjpf2r-5 gWmJSZ']"));
     }
 
-    public WebElement btnExtrato(){
+    public WebElement clicBotaoExtrato(){
         return waits.visibilityOfElement(By.xpath("//a[@id='btn-EXTRATO']"));
     }
 

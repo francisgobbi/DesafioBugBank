@@ -8,16 +8,15 @@ import org.openqa.selenium.WebDriver;
 import Framework.Utils.FilesOperation;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
 
-public class TransferenciaTask {
+public class TarefaTransferencia {
 
     private WebDriver driver;
     private CadastroPage cadastroPage;
     private LoginPage loginPage;
     private TransferenciaPage transferenciaPage;
 
-    public TransferenciaTask(WebDriver driver){
+    public TarefaTransferencia(WebDriver driver){
 
         this.driver =driver;
         cadastroPage = new CadastroPage(this.driver);
@@ -48,11 +47,8 @@ public class TransferenciaTask {
             throw new RuntimeException(e);
 
         }
-        System.out.println("Nome do Titular da Conta: Francis" );
         System.out.println(numeroDaConta);
-
-        cadastroPage.btnFechar().click();
-
+        cadastroPage.clicBotaoFechar().click();
 
         // Realiza Cadastro com Saldo na conta
         cadastroPage.clicBotaoRegistrar().click();
@@ -68,9 +64,7 @@ public class TransferenciaTask {
         cadastroPage.clicBotaoCadastrar().click();
         cadastroPage.numeroDaConta().getText();
         cadastroPage.digitoDaConta().getText();
-        cadastroPage.btnFechar().click();
-
-
+        cadastroPage.clicBotaoFechar().click();
     }
 
     public void realizarTransferencia() throws IOException {
@@ -86,18 +80,18 @@ public class TransferenciaTask {
 
         // Realizara Transferencia
         loginPage.saldo().getText();
-        transferenciaPage.btnTransferencia().click();
+        transferenciaPage.clicBotaoTransferencia().click();
         transferenciaPage.numeroDaConta().sendKeys(numeroDaContaFormatado);
         transferenciaPage.digito().sendKeys(digitoDaConta);
         transferenciaPage.valorDaTransferencia().sendKeys("850");
         transferenciaPage.descricao().sendKeys("Teste Transferencia Automatizada realizada com sucesso");
-        transferenciaPage.btnTransferirAgora().click();
-        transferenciaPage.txtTransferenciaRealizada().isDisplayed();
+        transferenciaPage.clicBotaoTransferirAgora().click();
+        transferenciaPage.textoTransferenciaRealizada().isDisplayed();
         String mensagem = "Transferencia realizada com sucesso";
-        Assert.assertEquals(mensagem, transferenciaPage.txtTransferenciaRealizada().getText());
-        transferenciaPage.btnFechar().click();
-        transferenciaPage.btnVoltar().click();
-        transferenciaPage.btnExtrato().click();
+        Assert.assertEquals(mensagem, transferenciaPage.textoTransferenciaRealizada().getText());
+        transferenciaPage.clicBotaoFechar().click();
+        transferenciaPage.clicBotaoVoltar().click();
+        transferenciaPage.clicBotaoExtrato().click();
         transferenciaPage.saldoConta1().getText();
         transferenciaPage.clicBotatoSair().click();
 
@@ -116,8 +110,6 @@ public class TransferenciaTask {
 
         String saldoConta = loginPage.saldoSegundaConta().getText();
         String nomeTitularConta = loginPage.nameTitularConta().getText();
-        //System.out.println("O nome do titular da conta é :" + nomeTitularConta );
-        //System.out.println("O saldo da conta atual é :" + saldoConta);
 
         String validaSaldo2 = "Saldo em conta " + saldoConta;
         Assert.assertEquals(validaSaldo2, loginPage.saldo().getText());
@@ -143,7 +135,7 @@ public class TransferenciaTask {
         String validaSaldo2 = "Saldo em conta " + saldoConta;
         Assert.assertEquals(validaSaldo2, loginPage.saldo().getText());
 
-        transferenciaPage.btnExtrato().click();
+        transferenciaPage.clicBotaoExtrato().click();
     }
 
 }
