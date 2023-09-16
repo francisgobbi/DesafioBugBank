@@ -14,34 +14,33 @@ public class RealizarTransfereciaEntreContas extends TestOpenLinkBank {
 
 
     @Test
-    public void criarDuasContasComSaldoESalvarOsSeusDados() throws IOException {
+    public void acriarDuasContasComSaldoESalvarOsSeusDados() throws IOException {
         try {
-            transferencia.criarDuasContasComSaldosESalvarOsSeusDados();
+            transferencia.acriarDuasContasComSaldosESalvarOsSeusDados();
         }catch (Exception m){
             System.out.println(m);
         }
     }
-
     @Test
-    public void RealizarUmaTransferenciaDeValorParaOutra() throws IOException {
+    public void brealizarUmaTransferenciaDeValorParaOutra() throws IOException {
       try {
-          transferencia.realizarLogin();
-          transferencia.RealizarUmaTransferenciaDeValorParaOutra();
+          transferencia.brealizarLogin();
+          transferencia.brealizarUmaTransferenciaDeValorParaOutra();
       }catch (Exception m){
           System.out.println(m);
         }
 
     }
     @Test
-    public void rvalidarEntradaDaContaEnvolvida() throws IOException {
+    public void xvalidarEntradaDaContaEnvolvida() throws IOException {
         try {
-            transferencia.realizarLoginResultadoTransferencia();
+            transferencia.xrealizarLoginResultadoTransferencia();
         }catch (Exception m){
             System.out.println(m);
         }
     }
     @Test
-    public void validarSaidaDaContaQueRealizouATransferencia() throws IOException {
+    public void zvalidarSaidaDaContaQueRealizouATransferencia() throws IOException {
         try {
             transferencia.wvalidarSaidaDaContaQueRealizouATransferencia();
         }catch (Exception m){

@@ -25,7 +25,7 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
     }
 
 
-    public void criarDuasContasComSaldosESalvarOsSeusDados() throws IOException {
+    public void acriarDuasContasComSaldosESalvarOsSeusDados() throws IOException {
 
         cadastroPage.clicBotaoRegistrar().click();
         cadastroPage.getemail().sendKeys("francis@automatizado.com");
@@ -57,8 +57,8 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         cadastroPage.getSenha().sendKeys("1234");
         cadastroPage.getconfirmaSenha().clear();
         cadastroPage.getconfirmaSenha().sendKeys("1234");
-        cadastroPage.getCriarContaComSaldo().click();
-        cadastroPage.getCriarContaComSaldo().click();
+        //cadastroPage.getCriarContaComSaldo().click();
+        //cadastroPage.getCriarContaComSaldo().click();
         cadastroPage.clicBotaoCadastrar().click();
 
         String numeroConta1 = cadastroPage.numeroDaConta().getText();
@@ -74,7 +74,7 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         cadastroPage.clicBotaoFechar().click();
     }
 
-    public void RealizarUmaTransferenciaDeValorParaOutra() throws IOException {
+    public void brealizarUmaTransferenciaDeValorParaOutra() throws IOException {
 
         String numeroDaContaFormatado = null;
         String digitoDaConta = null;
@@ -87,7 +87,7 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         transferenciaPage.clicBotaoTransferencia().click();
         transferenciaPage.numeroConta().sendKeys(numeroDaContaFormatado);
         transferenciaPage.digito().sendKeys(digitoDaConta);
-        transferenciaPage.valorDaTransferencia().sendKeys("955");
+        transferenciaPage.valorDaTransferencia().sendKeys("910");
         transferenciaPage.descricao().sendKeys("Teste transferencia automatizada realizada com sucesso");
         transferenciaPage.clicBotaoTransferirAgora().click();
         transferenciaPage.textoTransferenciaRealizada().isDisplayed();
@@ -101,7 +101,7 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
 
     }
 
-    public void realizarLogin() throws IOException {
+    public void brealizarLogin() throws IOException {
 
         loginPage.getEmailLogin().sendKeys("fernanda@automatizado.com");
         loginPage.getSenhaLogin().sendKeys("1234");
@@ -120,7 +120,7 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
 
     }
 
-    public void realizarLoginResultadoTransferencia() throws IOException {
+    public void xrealizarLoginResultadoTransferencia() throws IOException {
 
         loginPage.getEmailLogin().sendKeys("francis@automatizado.com");
         loginPage.getSenhaLogin().sendKeys("1234");
