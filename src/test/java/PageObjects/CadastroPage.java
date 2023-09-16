@@ -70,4 +70,5 @@ public class CadastroPage {
     public WebElement clicBotaoFechar(){
         return waits.visibilityOfElement(By.xpath("//a[@id='btnCloseModal' and @class='styles__Button-sc-8zteav-5 gyHUvN']"));
     }
+
 }

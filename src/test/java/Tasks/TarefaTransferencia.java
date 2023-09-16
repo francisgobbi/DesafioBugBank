@@ -41,8 +41,8 @@ public class TarefaTransferencia {
         String numeroDaContaFormatado = splitNumeroDaConta[0].replaceAll("[^0-9]", "");
         String digitoDaConta = splitNumeroDaConta[1].replaceAll("[^0-9]", "");
         try {
-            FilesOperation.setProperty("conta", "numeroConta", numeroDaContaFormatado);
-            FilesOperation.setProperty("conta", "digitoConta", digitoDaConta);
+            FilesOperation.setProperty("contabanco", "numeroContaBanco", numeroDaContaFormatado);
+            FilesOperation.setProperty("contabanco", "digitoContaBanco", digitoDaConta);
         } catch (IOException e) {
             throw new RuntimeException(e);
 
@@ -72,8 +72,8 @@ public class TarefaTransferencia {
         String numeroDaContaFormatado = null;
         String digitoDaConta = null;
         try {
-            numeroDaContaFormatado = FilesOperation.getProperties("conta").getProperty("numeroConta");
-            digitoDaConta = FilesOperation.getProperties("conta").getProperty("digitoConta");
+            numeroDaContaFormatado = FilesOperation.getProperties("contabanco").getProperty("numeroContaBanco");
+            digitoDaConta = FilesOperation.getProperties("contabanco").getProperty("digitoContaBanco");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -81,7 +81,7 @@ public class TarefaTransferencia {
         // Realizara Transferencia
         loginPage.saldo().getText();
         transferenciaPage.clicBotaoTransferencia().click();
-        transferenciaPage.numeroDaConta().sendKeys(numeroDaContaFormatado);
+        transferenciaPage.numeroConta().sendKeys(numeroDaContaFormatado);
         transferenciaPage.digito().sendKeys(digitoDaConta);
         transferenciaPage.valorDaTransferencia().sendKeys("850");
         transferenciaPage.descricao().sendKeys("Teste Transferencia Automatizada realizada com sucesso");
@@ -92,7 +92,7 @@ public class TarefaTransferencia {
         transferenciaPage.clicBotaoFechar().click();
         transferenciaPage.clicBotaoVoltar().click();
         transferenciaPage.clicBotaoExtrato().click();
-        transferenciaPage.saldoConta1().getText();
+        transferenciaPage.saldoConta().getText();
         transferenciaPage.clicBotatoSair().click();
 
     }

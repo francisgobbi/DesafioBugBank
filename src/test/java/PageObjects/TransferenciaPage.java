@@ -19,7 +19,7 @@ public class TransferenciaPage {
         return waits.visibilityOfElement(By.xpath("//div[@class='home__ContainerButton-sc-1auj767-14 ebzpKL'][1]"));
     }
 
-    public WebElement numeroDaConta(){
+    public WebElement numeroConta(){
         return waits.visibilityOfElement(By.xpath("//input[@class='input__default' and@name='accountNumber']"));
     }
 
@@ -56,7 +56,7 @@ public class TransferenciaPage {
     }
 
 
-    public WebElement saldoConta1(){
+    public WebElement saldoConta(){
         return waits.visibilityOfElement((By.xpath("//p[@id= 'textBalanceAvailable']")));
     }
 

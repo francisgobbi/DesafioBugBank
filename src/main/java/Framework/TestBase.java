@@ -1,12 +1,10 @@
 package Framework;
-
 import Framework.Browser.DriverManager;
 import Framework.Browser.TypeBrowser;
 import Framework.Utils.FilesOperation;
 import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebDriver;
-
 import java.io.IOException;
 
 public class TestBase extends DriverManager {
@@ -20,8 +18,8 @@ public class TestBase extends DriverManager {
 
     @Before
     public void setUp()  throws IOException {
-        String URL = filesOperation.getProperties("url").getProperty("url");
-        getDriver().get(URL);
+        String linkUrl = filesOperation.getProperties("urlbanco").getProperty("urlbanco");
+        getDriver().get(linkUrl);
     }
 
     @AfterEach
