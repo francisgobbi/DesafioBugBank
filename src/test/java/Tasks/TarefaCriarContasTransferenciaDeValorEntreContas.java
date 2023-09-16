@@ -9,19 +9,96 @@ import Framework.Utils.FilesOperation;
 
 import java.io.IOException;
 
-public class TarefaTransferencia {
+public class TarefaCriarContasTransferenciaDeValorEntreContas {
 
     private WebDriver driver;
     private CadastroPage cadastroPage;
     private LoginPage loginPage;
     private TransferenciaPage transferenciaPage;
 
-    public TarefaTransferencia(WebDriver driver){
+    public TarefaCriarContasTransferenciaDeValorEntreContas(WebDriver driver){
 
         this.driver =driver;
         cadastroPage = new CadastroPage(this.driver);
         loginPage = new LoginPage(this.driver);
         transferenciaPage = new TransferenciaPage(this.driver);
+    }
+
+
+    public void criarDuasContasComSaldosESalvarOsSeusDados() throws IOException {
+
+        cadastroPage.clicBotaoRegistrar().click();
+        cadastroPage.getemail().sendKeys("francis@automatizado.com");
+        cadastroPage.getNome().sendKeys("Francis");
+        cadastroPage.getSenha().sendKeys("1234");
+        cadastroPage.getconfirmaSenha().sendKeys("1234");
+        cadastroPage.getCriarContaComSaldo().click();
+        cadastroPage.clicBotaoCadastrar().click();
+
+        String numeroConta = cadastroPage.numeroDaConta().getText();
+        String[] separarNumeroDaConta = numeroConta.split("-");
+
+        String apenasNumeroDaConta = separarNumeroDaConta[0].replaceAll("[^0-9]", "");
+        String digitoDaConta = separarNumeroDaConta[1].replaceAll("[^0-9]", "");
+
+        FilesOperation.setProperty("contasbanco", "numeroContaBanco", apenasNumeroDaConta);
+        FilesOperation.setProperty("contasbanco", "digitoContaBanco", digitoDaConta);
+
+        System.out.println(numeroConta);
+        cadastroPage.clicBotaoFechar().click();
+
+        // Realiza Cadastro com Saldo na conta
+        cadastroPage.clicBotaoRegistrar().click();
+        cadastroPage.getemail().clear();
+        cadastroPage.getemail().sendKeys("fernanda@automatizado.com");
+        cadastroPage.getNome().clear();
+        cadastroPage.getNome().sendKeys("Fernanda");
+        cadastroPage.getSenha().clear();
+        cadastroPage.getSenha().sendKeys("1234");
+        cadastroPage.getconfirmaSenha().clear();
+        cadastroPage.getconfirmaSenha().sendKeys("1234");
+        cadastroPage.getCriarContaComSaldo().click();
+        cadastroPage.getCriarContaComSaldo().click();
+        cadastroPage.clicBotaoCadastrar().click();
+
+        String numeroConta1 = cadastroPage.numeroDaConta().getText();
+        String[] separarNumeroDaConta1 = numeroConta1.split("-");
+
+        String apenasNumeroDaConta1 = separarNumeroDaConta1[0].replaceAll("[^0-9]", "");
+        String digitoDaConta1 = separarNumeroDaConta1[1].replaceAll("[^0-9]", "");
+
+        FilesOperation.setProperty("contasbanco", "numeroContaBanco1", apenasNumeroDaConta1);
+        FilesOperation.setProperty("contasbanco", "digitoContaBanco1", digitoDaConta1);
+
+        System.out.println(numeroConta1);
+        cadastroPage.clicBotaoFechar().click();
+    }
+
+    public void RealizarUmaTransferenciaDeValorParaOutra() throws IOException {
+
+        String numeroDaContaFormatado = null;
+        String digitoDaConta = null;
+
+        numeroDaContaFormatado = FilesOperation.getProperties("contasbanco").getProperty("numeroContaBanco");
+        digitoDaConta = FilesOperation.getProperties("contasbanco").getProperty("digitoContaBanco");
+
+        // Realizara Transferencia
+        loginPage.saldo().getText();
+        transferenciaPage.clicBotaoTransferencia().click();
+        transferenciaPage.numeroConta().sendKeys(numeroDaContaFormatado);
+        transferenciaPage.digito().sendKeys(digitoDaConta);
+        transferenciaPage.valorDaTransferencia().sendKeys("955");
+        transferenciaPage.descricao().sendKeys("Teste transferencia automatizada realizada com sucesso");
+        transferenciaPage.clicBotaoTransferirAgora().click();
+        transferenciaPage.textoTransferenciaRealizada().isDisplayed();
+        String mensagem = "Transferencia realizada com sucesso";
+        Assert.assertEquals(mensagem, transferenciaPage.textoTransferenciaRealizada().getText());
+        transferenciaPage.clicBotaoFechar().click();
+        transferenciaPage.clicBotaoVoltar().click();
+        transferenciaPage.clicBotaoExtrato().click();
+        transferenciaPage.saldoConta().getText();
+        transferenciaPage.clicBotatoSair().click();
+
     }
 
     public void realizarLogin() throws IOException {
@@ -40,73 +117,6 @@ public class TarefaTransferencia {
 
         String validaSaldo2 = "Saldo em conta " + saldoConta;
         Assert.assertEquals(validaSaldo2, loginPage.saldo().getText());
-
-    }
-
-    public void realizaCadastro() throws IOException {
-
-        // Realiza Cadatsro com Saldo zerado
-        cadastroPage.clicBotaoRegistrar().click();
-        cadastroPage.getemail().sendKeys("francis@automatizado.com");
-        cadastroPage.getNome().sendKeys("Francis");
-        cadastroPage.getSenha().sendKeys("1234");
-        cadastroPage.getconfirmaSenha().sendKeys("1234");
-        cadastroPage.clicBotaoCadastrar().click();
-
-        String numeroDaConta = cadastroPage.numeroDaConta().getText();
-        String numeroConta = cadastroPage.numeroDaConta().getText();
-        String[] splitNumeroDaConta = numeroConta.split("-");
-
-        String numeroDaContaFormatado = splitNumeroDaConta[0].replaceAll("[^0-9]", "");
-        String digitoDaConta = splitNumeroDaConta[1].replaceAll("[^0-9]", "");
-
-        FilesOperation.setProperty("contabanco", "numeroContaBanco", numeroDaContaFormatado);
-        FilesOperation.setProperty("contabanco", "digitoContaBanco", digitoDaConta);
-
-        System.out.println(numeroDaConta);
-        cadastroPage.clicBotaoFechar().click();
-
-        // Realiza Cadastro com Saldo na conta
-        cadastroPage.clicBotaoRegistrar().click();
-        cadastroPage.getemail().clear();
-        cadastroPage.getemail().sendKeys("fernanda@automatizado.com");
-        cadastroPage.getNome().clear();
-        cadastroPage.getNome().sendKeys("Fernanda");
-        cadastroPage.getSenha().clear();
-        cadastroPage.getSenha().sendKeys("1234");
-        cadastroPage.getconfirmaSenha().clear();
-        cadastroPage.getconfirmaSenha().sendKeys("1234");
-        cadastroPage.getCriarContaComSaldo().click();
-        cadastroPage.clicBotaoCadastrar().click();
-        cadastroPage.numeroDaConta().getText();
-        cadastroPage.digitoDaConta().getText();
-        cadastroPage.clicBotaoFechar().click();
-    }
-
-    public void realizarTransferencia() throws IOException {
-
-        String numeroDaContaFormatado = null;
-        String digitoDaConta = null;
-
-        numeroDaContaFormatado = FilesOperation.getProperties("contabanco").getProperty("numeroContaBanco");
-        digitoDaConta = FilesOperation.getProperties("contabanco").getProperty("digitoContaBanco");
-
-        // Realizara Transferencia
-        loginPage.saldo().getText();
-        transferenciaPage.clicBotaoTransferencia().click();
-        transferenciaPage.numeroConta().sendKeys(numeroDaContaFormatado);
-        transferenciaPage.digito().sendKeys(digitoDaConta);
-        transferenciaPage.valorDaTransferencia().sendKeys("955");
-        transferenciaPage.descricao().sendKeys("Teste transferencia automatizada realizada com sucesso");
-        transferenciaPage.clicBotaoTransferirAgora().click();
-        transferenciaPage.textoTransferenciaRealizada().isDisplayed();
-        String mensagem = "Transferencia realizada com sucesso";
-        Assert.assertEquals(mensagem, transferenciaPage.textoTransferenciaRealizada().getText());
-        transferenciaPage.clicBotaoFechar().click();
-        transferenciaPage.clicBotaoVoltar().click();
-        transferenciaPage.clicBotaoExtrato().click();
-        transferenciaPage.saldoConta().getText();
-        transferenciaPage.clicBotatoSair().click();
 
     }
 
