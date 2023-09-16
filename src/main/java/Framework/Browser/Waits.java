@@ -24,15 +24,6 @@ public class Waits {
         return  wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
-    public WebElement loadElement(WebElement element){
-
-        try{
-        return new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated((By) element));
-        }catch(WebDriverException e){
-            return element;
-        }
-    }
-
 
 }
 

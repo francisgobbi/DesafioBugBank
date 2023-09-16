@@ -1,15 +1,13 @@
 package TestCases;
 import Tasks.TarefaTransferencia;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
-import Framework.TestBase;
+import Framework.TestOpenLinkBank;
 
 import java.io.IOException;
 
 
-public class RealizarTransferecia extends TestBase{
+public class RealizarTransferecia extends TestOpenLinkBank {
 
     private WebDriver driver = getDriver();
     TarefaTransferencia transferencia = new TarefaTransferencia(driver);
@@ -29,7 +27,6 @@ public class RealizarTransferecia extends TestBase{
       try {
           transferencia.realizarLogin();
           transferencia.realizarTransferencia();
-
       }catch (Exception m){
           System.out.println(m);
         }
@@ -38,7 +35,7 @@ public class RealizarTransferecia extends TestBase{
     @Test
     public void validarResultados() throws IOException {
         try {
-            transferencia.realizarLoginResultado();
+            transferencia.realizarLoginResultadoTransferencia();
         }catch (Exception m){
             System.out.println(m);
         }

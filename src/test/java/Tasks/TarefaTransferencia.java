@@ -24,6 +24,25 @@ public class TarefaTransferencia {
         transferenciaPage = new TransferenciaPage(this.driver);
     }
 
+    public void realizarLogin() throws IOException {
+
+        loginPage.getEmailLogin().sendKeys("fernanda@automatizado.com");
+        loginPage.getSenhaLogin().sendKeys("1234");
+        loginPage.clicBotaoAcessar().click();
+        loginPage.textoBemVindo().getText();
+
+        String msg = "bem vindo ao BugBank :)";
+        Assert.assertEquals(msg, loginPage.textoBemVindo().getText());
+        loginPage.saldo().getText();
+
+        String saldoConta = loginPage.saldoSegundaConta().getText();
+        String nomeTitularConta = loginPage.nameTitularConta().getText();
+
+        String validaSaldo2 = "Saldo em conta " + saldoConta;
+        Assert.assertEquals(validaSaldo2, loginPage.saldo().getText());
+
+    }
+
     public void realizaCadastro() throws IOException {
 
         // Realiza Cadatsro com Saldo zerado
@@ -40,13 +59,10 @@ public class TarefaTransferencia {
 
         String numeroDaContaFormatado = splitNumeroDaConta[0].replaceAll("[^0-9]", "");
         String digitoDaConta = splitNumeroDaConta[1].replaceAll("[^0-9]", "");
-        try {
-            FilesOperation.setProperty("contabanco", "numeroContaBanco", numeroDaContaFormatado);
-            FilesOperation.setProperty("contabanco", "digitoContaBanco", digitoDaConta);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
 
-        }
+        FilesOperation.setProperty("contabanco", "numeroContaBanco", numeroDaContaFormatado);
+        FilesOperation.setProperty("contabanco", "digitoContaBanco", digitoDaConta);
+
         System.out.println(numeroDaConta);
         cadastroPage.clicBotaoFechar().click();
 
@@ -71,20 +87,17 @@ public class TarefaTransferencia {
 
         String numeroDaContaFormatado = null;
         String digitoDaConta = null;
-        try {
-            numeroDaContaFormatado = FilesOperation.getProperties("contabanco").getProperty("numeroContaBanco");
-            digitoDaConta = FilesOperation.getProperties("contabanco").getProperty("digitoContaBanco");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
+        numeroDaContaFormatado = FilesOperation.getProperties("contabanco").getProperty("numeroContaBanco");
+        digitoDaConta = FilesOperation.getProperties("contabanco").getProperty("digitoContaBanco");
 
         // Realizara Transferencia
         loginPage.saldo().getText();
         transferenciaPage.clicBotaoTransferencia().click();
         transferenciaPage.numeroConta().sendKeys(numeroDaContaFormatado);
         transferenciaPage.digito().sendKeys(digitoDaConta);
-        transferenciaPage.valorDaTransferencia().sendKeys("850");
-        transferenciaPage.descricao().sendKeys("Teste Transferencia Automatizada realizada com sucesso");
+        transferenciaPage.valorDaTransferencia().sendKeys("955");
+        transferenciaPage.descricao().sendKeys("Teste transferencia automatizada realizada com sucesso");
         transferenciaPage.clicBotaoTransferirAgora().click();
         transferenciaPage.textoTransferenciaRealizada().isDisplayed();
         String mensagem = "Transferencia realizada com sucesso";
@@ -97,26 +110,7 @@ public class TarefaTransferencia {
 
     }
 
-    public void realizarLogin() throws IOException {
-
-        loginPage.getEmailLogin().sendKeys("fernanda@automatizado.com");
-        loginPage.getSenhaLogin().sendKeys("1234");
-        loginPage.clicBotaoAcessar().click();
-        loginPage.textoBemVindo().getText();
-
-        String msg = "bem vindo ao BugBank :)";
-        Assert.assertEquals(msg, loginPage.textoBemVindo().getText());
-        loginPage.saldo().getText();
-
-        String saldoConta = loginPage.saldoSegundaConta().getText();
-        String nomeTitularConta = loginPage.nameTitularConta().getText();
-
-        String validaSaldo2 = "Saldo em conta " + saldoConta;
-        Assert.assertEquals(validaSaldo2, loginPage.saldo().getText());
-
-    }
-
-    public void realizarLoginResultado() throws IOException {
+    public void realizarLoginResultadoTransferencia() throws IOException {
 
         loginPage.getEmailLogin().sendKeys("francis@automatizado.com");
         loginPage.getSenhaLogin().sendKeys("1234");

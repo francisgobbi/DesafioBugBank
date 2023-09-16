@@ -52,13 +52,12 @@ public class DriverManager {
             driver = getManagerDriver(type);
         }
         return driver;
-
     }
 
-    public static void quitDriver() {
+    public static void closeDriver() {
 
         if (driver != null) {
-            driver.quit();
+            driver.close();
         }
     }
 

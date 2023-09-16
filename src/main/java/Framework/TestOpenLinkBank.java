@@ -7,7 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebDriver;
 import java.io.IOException;
 
-public class TestBase extends DriverManager {
+public class TestOpenLinkBank extends DriverManager {
     private static WebDriver driver;
     private static FilesOperation filesOperation = new FilesOperation();
 
@@ -17,13 +17,13 @@ public class TestBase extends DriverManager {
     }
 
     @Before
-    public void setUp()  throws IOException {
+    public void openLinkBank()  throws IOException {
         String linkUrl = filesOperation.getProperties("urlbanco").getProperty("urlbanco");
         getDriver().get(linkUrl);
     }
 
     @AfterEach
-    public void finish(){
+    public void finishDriver(){
             if (driver != null) {
                 driver.close();
             }
