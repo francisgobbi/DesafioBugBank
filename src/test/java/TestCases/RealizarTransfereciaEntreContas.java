@@ -23,7 +23,7 @@ public class RealizarTransfereciaEntreContas extends TestOpenLinkBank {
     }
 
     @Test
-    public void AcessarUmaContaERealizarUmaTransferenciaDeValorParaOutra() throws IOException {
+    public void RealizarUmaTransferenciaDeValorParaOutra() throws IOException {
       try {
           transferencia.realizarLogin();
           transferencia.RealizarUmaTransferenciaDeValorParaOutra();
@@ -33,7 +33,7 @@ public class RealizarTransfereciaEntreContas extends TestOpenLinkBank {
 
     }
     @Test
-    public void validarEntradaESaidaDasContasEnvolvidas() throws IOException {
+    public void rvalidarEntradaDaContaEnvolvida() throws IOException {
         try {
             transferencia.realizarLoginResultadoTransferencia();
         }catch (Exception m){
