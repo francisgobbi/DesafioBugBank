@@ -133,13 +133,42 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
 
         String saldoConta = loginPage.saldoSegundaConta().getText();
         String nomeTitularConta = loginPage.nameTitularConta().getText();
+        System.out.println("");
         System.out.println("O nome do titular da conta é :" + nomeTitularConta );
-        System.out.println("O Saldo da conta é :" + saldoConta);
-
+        System.out.println("O saldo atual da conta que recebeu transferencia é :" + saldoConta);
+        System.out.println("Numero da Conta : " + loginPage.numeroComDigitoConta().getText() );
+        System.out.println("");
         String validaSaldo2 = "Saldo em conta " + saldoConta;
         Assert.assertEquals(validaSaldo2, loginPage.saldo().getText());
 
         transferenciaPage.clicBotaoExtrato().click();
+    }
+
+    public void wvalidarSaidaDaContaQueRealizouATransferencia(){
+        try{
+            loginPage.getEmailLogin().sendKeys("fernanda@automatizado.com");
+            loginPage.getSenhaLogin().sendKeys("1234");
+            loginPage.clicBotaoAcessar().click();
+            loginPage.textoBemVindo().getText();
+
+            String msg = "bem vindo ao BugBank :)";
+            Assert.assertEquals(msg, loginPage.textoBemVindo().getText());
+            loginPage.saldo().getText();
+
+            String saldoConta = loginPage.saldoSegundaConta().getText();
+            String nomeTitularConta = loginPage.nameTitularConta().getText();
+
+            System.out.println("Nome do Titular da Conta : " + nomeTitularConta);
+            System.out.println("Saldo da conta que realizou a trasnferencia : " + saldoConta);
+            System.out.println("Numero da Conta : " + loginPage.numeroComDigitoConta().getText() );
+
+            String validaSaldo2 = "Saldo em conta " + saldoConta;
+            Assert.assertEquals(validaSaldo2, loginPage.saldo().getText());
+        }catch(Exception e){
+            System.out.println(e);
+
+        }
+
     }
 
 }

@@ -40,5 +40,13 @@ public class RealizarTransfereciaEntreContas extends TestOpenLinkBank {
             System.out.println(m);
         }
     }
+    @Test
+    public void validarSaidaDaContaQueRealizouATransferencia() throws IOException {
+        try {
+            transferencia.wvalidarSaidaDaContaQueRealizouATransferencia();
+        }catch (Exception m){
+            System.out.println(m);
+        }
+    }
 
 }

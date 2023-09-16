@@ -44,4 +44,9 @@ public class LoginPage {
 
     }
 
+    public WebElement numeroComDigitoConta(){
+        return waits.visibilityOfElement((By.xpath(" //p[@id='textAccountNumber']//span")));
+
+    }
+
 }
