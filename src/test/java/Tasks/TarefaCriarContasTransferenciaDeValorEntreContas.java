@@ -30,6 +30,7 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         cadastroPage.clicBotaoRegistrar().click();
         cadastroPage.getemail().sendKeys("francis@automatizado.com");
         cadastroPage.getNome().sendKeys("Francis");
+        String nomeTitularPrimeiraConta =  "Francis";
         cadastroPage.getSenha().sendKeys("1234");
         cadastroPage.getconfirmaSenha().sendKeys("1234");
         cadastroPage.getCriarContaComSaldo().click();
@@ -37,14 +38,13 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
 
         String numeroConta = cadastroPage.numeroDaConta().getText();
         String[] separarNumeroDaConta = numeroConta.split("-");
-
         String apenasNumeroDaConta = separarNumeroDaConta[0].replaceAll("[^0-9]", "");
         String digitoDaConta = separarNumeroDaConta[1].replaceAll("[^0-9]", "");
 
-        FilesOperation.setProperty("dadosPrimeiraContaBanco", "nomeTitularPrimeiraConta", "Francis");
+        FilesOperation.setProperty("dadosPrimeiraContaBanco", "nomeTitularPrimeiraConta", nomeTitularPrimeiraConta);
         FilesOperation.setProperty("dadosPrimeiraContaBanco", "numeroPrimeiraContaBanco", apenasNumeroDaConta);
         FilesOperation.setProperty("dadosPrimeiraContaBanco", "digitoPrimeiraContaBanco", digitoDaConta);
-        FilesOperation.setProperty("dadosPrimeiraContaBanco", "saldoPrimeiraContaBanco", "R$ 1000,00");
+        FilesOperation.setProperty("dadosPrimeiraContaBanco", "saldoPrimeiraContaBanco", "R$ 1.000,00");
 
         System.out.println(numeroConta);
         cadastroPage.clicBotaoFechar().click();
@@ -55,12 +55,11 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         cadastroPage.getemail().sendKeys("fernanda@automatizado.com");
         cadastroPage.getNome().clear();
         cadastroPage.getNome().sendKeys("Fernanda");
+        String nomeTitularSegundaConta = "Fernanda";
         cadastroPage.getSenha().clear();
         cadastroPage.getSenha().sendKeys("1234");
         cadastroPage.getconfirmaSenha().clear();
         cadastroPage.getconfirmaSenha().sendKeys("1234");
-        //cadastroPage.getCriarContaComSaldo().click();
-        //cadastroPage.getCriarContaComSaldo().click();
         cadastroPage.clicBotaoCadastrar().click();
 
         String numeroConta1 = cadastroPage.numeroDaConta().getText();
@@ -69,12 +68,13 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         String apenasNumeroDaConta1 = separarNumeroDaConta1[0].replaceAll("[^0-9]", "");
         String digitoDaConta1 = separarNumeroDaConta1[1].replaceAll("[^0-9]", "");
 
-        FilesOperation.setProperty("dadosSegundaContaBanco", "nomeTitularSegundaConta", "Fernanda");
+        FilesOperation.setProperty("dadosSegundaContaBanco", "nomeTitularSegundaConta", nomeTitularSegundaConta);
         FilesOperation.setProperty("dadosSegundaContaBanco", "numeroSegundaContaBanco", apenasNumeroDaConta1);
         FilesOperation.setProperty("dadosSegundaContaBanco", "digitoSegundaContaBanco", digitoDaConta1);
-        FilesOperation.setProperty("dadosSegundaContaBanco", "saldoSegundaContaBanco", "R$ 1000,00");
+        FilesOperation.setProperty("dadosSegundaContaBanco", "saldoSegundaContaBanco", "R$ 1.000,00");
 
         System.out.println(numeroConta1);
+        System.out.println("");
         cadastroPage.clicBotaoFechar().click();
     }
 
