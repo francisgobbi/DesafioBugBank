@@ -28,17 +28,18 @@ Testes automatizados para simular o cadastro de duas contas, com saldo no link: 
 
 ## Observação
 - O saldo atual das contas sera exibido no momento da execução.
-- - Para clonar o projeto BugBank em seu computador execute:
+- Para clonar o projeto BugBank em seu computador e executar, realize estes passos abaixo :
 - - Open Git Bash here
 - - Digitar: git clone https://github.com/francisgobbi/DesafioBugBank.git
 - - Projeto sera clonado no seu computador.
-- Caso encontrar problemas para executar, realize estes passo :
+- Para executar o projeto, realize estes passo :
 - - Maven no IntelliJ
 - - Reload all Maven Project
+- - Executar a funcão na pasta **src** -> **test** -> **TestCases** -->  **RealizarTrasnferenciaEntreContas**
+
+- Caso não conseguir executar o projeto com sucesso, realize os passos abaixo:
 - - mvn clean
 - - mvn install
-
-- Executar a funcão na pasta **TestCases** -->  **RealizarTrasnferenciaEntreContas**
 
 ## Notas Gerais
 - BeforeEach e AfterEach (Itens comuns a todos)
