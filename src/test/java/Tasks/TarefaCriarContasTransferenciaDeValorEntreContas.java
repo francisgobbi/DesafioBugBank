@@ -60,6 +60,8 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         cadastroPage.getSenha().sendKeys("1234");
         cadastroPage.getconfirmaSenha().clear();
         cadastroPage.getconfirmaSenha().sendKeys("1234");
+        cadastroPage.getCriarContaComSaldo().click();
+        cadastroPage.getCriarContaComSaldo().click();
         cadastroPage.clicBotaoCadastrar().click();
 
         String numeroConta1 = cadastroPage.numeroDaConta().getText();
