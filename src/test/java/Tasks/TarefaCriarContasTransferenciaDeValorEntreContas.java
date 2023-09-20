@@ -41,8 +41,10 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         String apenasNumeroDaConta = separarNumeroDaConta[0].replaceAll("[^0-9]", "");
         String digitoDaConta = separarNumeroDaConta[1].replaceAll("[^0-9]", "");
 
-        FilesOperation.setProperty("contasbanco", "numeroContaBanco", apenasNumeroDaConta);
-        FilesOperation.setProperty("contasbanco", "digitoContaBanco", digitoDaConta);
+        FilesOperation.setProperty("dadosPrimeiraContaBanco", "nomeTitularPrimeiraConta", "Francis");
+        FilesOperation.setProperty("dadosPrimeiraContaBanco", "numeroPrimeiraContaBanco", apenasNumeroDaConta);
+        FilesOperation.setProperty("dadosPrimeiraContaBanco", "digitoPrimeiraContaBanco", digitoDaConta);
+        FilesOperation.setProperty("dadosPrimeiraContaBanco", "saldoPrimeiraContaBanco", "R$ 1000,00");
 
         System.out.println(numeroConta);
         cadastroPage.clicBotaoFechar().click();
@@ -67,8 +69,10 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         String apenasNumeroDaConta1 = separarNumeroDaConta1[0].replaceAll("[^0-9]", "");
         String digitoDaConta1 = separarNumeroDaConta1[1].replaceAll("[^0-9]", "");
 
-        FilesOperation.setProperty("contasbanco", "numeroContaBanco1", apenasNumeroDaConta1);
-        FilesOperation.setProperty("contasbanco", "digitoContaBanco1", digitoDaConta1);
+        FilesOperation.setProperty("dadosSegundaContaBanco", "nomeTitularSegundaConta", "Fernanda");
+        FilesOperation.setProperty("dadosSegundaContaBanco", "numeroSegundaContaBanco", apenasNumeroDaConta1);
+        FilesOperation.setProperty("dadosSegundaContaBanco", "digitoSegundaContaBanco", digitoDaConta1);
+        FilesOperation.setProperty("dadosSegundaContaBanco", "saldoSegundaContaBanco", "R$ 1000,00");
 
         System.out.println(numeroConta1);
         cadastroPage.clicBotaoFechar().click();
@@ -79,8 +83,8 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         String numeroDaContaFormatado = null;
         String digitoDaConta = null;
 
-        numeroDaContaFormatado = FilesOperation.getProperties("contasbanco").getProperty("numeroContaBanco");
-        digitoDaConta = FilesOperation.getProperties("contasbanco").getProperty("digitoContaBanco");
+        numeroDaContaFormatado = FilesOperation.getProperties("dadosPrimeiraContaBanco").getProperty("numeroPrimeiraContaBanco");
+        digitoDaConta = FilesOperation.getProperties("dadosPrimeiraContaBanco").getProperty("digitoPrimeiraContaBanco");
 
         // Realizara Transferencia
         loginPage.saldo().getText();
