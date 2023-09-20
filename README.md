@@ -26,6 +26,20 @@ Os sub tópicos abaixo descrevem algumas decisões tomadas na estruturação do 
 ## Testes Automatizados
 Testes automatizados para simular o cadastro de duas contas, com saldo no link: https://bugbank.netlify.app/ do banco BugBank, acessar uma conta e realizar uma transferência de valor para outra. Validar a saída e entrada das contas envolvidas.
 
+## Observação
+- O saldo atual das contas sera exibido no momento da execução.
+- - Para clonar o projeto BugBank em seu computador execute:
+- - Open Git Bash here
+- - Digitar: git clone https://github.com/francisgobbi/DesafioBugBank.git
+- - Projeto sera clonado no seu computador.
+- Caso encontrar problemas para executar, realize estes passo :
+- - Maven no IntelliJ
+- - Reload all Maven Project
+- - mvn clean
+- - mvn install
+
+- Executar a funcão na pasta **TestCases** -->  **RealizarTrasnferenciaEntreContas**
+
 ## Notas Gerais
 - BeforeEach e AfterEach (Itens comuns a todos)
 - Design Patterns chamado page objetos. Foi criado classes específicas para cada página que você tem na aplicação. Para resolver um problema de reaproveitamento de código.
