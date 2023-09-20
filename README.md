@@ -13,7 +13,7 @@ Os sub tópicos abaixo descrevem algumas decisões tomadas na estruturação do 
 ##	Configurações de pastas do projeto:
 
 ##  Folder project:
-- A pasta **src** tem a seguinte estrutura informada, **main** --> **java** --> **Framework**, encontram-se as funções de abrir o site BugBank, navegar e waits informada no enunciado do desafio.
+- A pasta **src** tem a seguinte estrutura informada, **main** --> **java** --> **Framework**, encontram-se as funções para abrir o site BugBank, navegar e waits informada no enunciado do desafio.
 
 - A pasta **src** tem a seguinte estrutura informada, **main** --> **java** --> **resources** --> **Properties**, encontram-se os valores das contas criadas no momento da executação.
 
