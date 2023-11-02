@@ -15,52 +15,52 @@ public class TransferenciaPage {
         waits = new Waits(this.driver);
     }
 
-    public WebElement clicBotaoTransferencia(){
+    public WebElement getBotaoTransferencia(){
         return waits.visibilityOfElement(By.xpath("//div[@class='home__ContainerButton-sc-1auj767-14 ebzpKL'][1]"));
     }
 
-    public WebElement numeroConta(){
+    public WebElement getnumeroConta(){
         return waits.visibilityOfElement(By.xpath("//input[@class='input__default' and@name='accountNumber']"));
     }
 
-    public WebElement digito(){
+    public WebElement getdigito(){
         return waits.visibilityOfElement(By.xpath("//input[@class='input__default' and@name='digit']"));
     }
 
-    public WebElement valorDaTransferencia(){
+    public WebElement getvalorDaTransferencia(){
         return waits.visibilityOfElement(By.xpath("//input[@class='input__default' and@name='transferValue']"));
     }
 
-    public WebElement descricao(){
+    public WebElement getdescricao(){
         return waits.visibilityOfElement(By.xpath("//input[@class='input__default' and@name='description']"));
     }
 
-    public WebElement clicBotaoTransferirAgora(){
+    public WebElement getBotaoTransferirAgora(){
         return waits.visibilityOfElement(By.xpath("//button[@class='style__ContainerButton-sc-1wsixal-0 CMabB button__child']"));
     }
 
-    public WebElement textoTransferenciaRealizada(){
+    public WebElement getTextoTransferenciaRealizada(){
         return waits.visibilityOfElement(By.xpath("//p[@class='styles__Text-sc-8zteav-4 gpcLtj']"));
     }
 
-    public WebElement clicBotaoFechar(){
+    public WebElement getBotaoFechar(){
         return waits.visibilityOfElement(By.xpath("//a[@id='btnCloseModal' and contains(@class, 'styles__Button-sc-8zteav-5')]"));
     }
 
-    public WebElement clicBotaoVoltar(){
+    public WebElement getBotaoVoltar(){
         return waits.visibilityOfElement(By.xpath("//a[@class='transfer__BackText-sc-1yjpf2r-5 gWmJSZ']"));
     }
 
-    public WebElement clicBotaoExtrato(){
+    public WebElement getBotaoExtrato(){
         return waits.visibilityOfElement(By.xpath("//a[@id='btn-EXTRATO']"));
     }
 
 
-    public WebElement saldoConta(){
+    public WebElement getSaldoConta(){
         return waits.visibilityOfElement((By.xpath("//p[@id= 'textBalanceAvailable']")));
     }
 
-    public WebElement clicBotatoSair(){
+    public WebElement getBotatoSair(){
         return waits.visibilityOfElement(By.id("btnExit"));
     }
 

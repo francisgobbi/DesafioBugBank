@@ -15,7 +15,7 @@ public class CadastroPage {
         waits = new Waits(this.driver);
     }
 
-    public WebElement clicBotaoRegistrar(){
+    public WebElement getBotaoRegistrar(){
         return waits.visibilityOfElement(By.xpath("//button[contains(text(), 'Registrar') and contains(@type, 'button')]"));
     }
 
@@ -43,11 +43,11 @@ public class CadastroPage {
         return driver.findElement(By.xpath("//div//label//label[@id='toggleAddBalance']"));
     }
 
-    public WebElement clicBotaoCadastrar(){
+    public WebElement getBotaoCadastrar(){
         return waits.visibilityOfElement(By.xpath("//button[normalize-space()='Cadastrar']"));
     }
 
-    public WebElement numeroDaConta(){
+    public WebElement getnumeroDaConta(){
         return waits.visibilityOfElement(By.id("modalText"));
     }
 
@@ -55,7 +55,7 @@ public class CadastroPage {
         return waits.visibilityOfElement(By.id("modalText"));
     }
 
-    public WebElement clicBotaoFechar(){
+    public WebElement getBotaoFechar(){
         return waits.visibilityOfElement(By.xpath("//a[@id='btnCloseModal' and @class='styles__Button-sc-8zteav-5 gyHUvN']"));
     }
 

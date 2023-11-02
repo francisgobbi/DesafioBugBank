@@ -27,16 +27,16 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
 
     public void acriarDuasContasComSaldosESalvarOsSeusDados() throws IOException {
 
-        cadastroPage.clicBotaoRegistrar().click();
+        cadastroPage.getBotaoRegistrar().click();
         cadastroPage.getemail().sendKeys("francis@automatizado.com");
         cadastroPage.getNome().sendKeys("Francis");
         String nomeTitularPrimeiraConta =  "Francis";
         cadastroPage.getSenha().sendKeys("1234");
         cadastroPage.getconfirmaSenha().sendKeys("1234");
         cadastroPage.getCriarContaComSaldo().click();
-        cadastroPage.clicBotaoCadastrar().click();
+        cadastroPage.getBotaoCadastrar().click();
 
-        String numeroConta = cadastroPage.numeroDaConta().getText();
+        String numeroConta = cadastroPage.getnumeroDaConta().getText();
         String[] separarNumeroDaConta = numeroConta.split("-");
         String apenasNumeroDaConta = separarNumeroDaConta[0].replaceAll("[^0-9]", "");
         String digitoDaConta = separarNumeroDaConta[1].replaceAll("[^0-9]", "");
@@ -47,10 +47,10 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         FilesOperation.setProperty("dadosPrimeiraContaBanco", "saldoPrimeiraContaBanco", "R$ 1.000,00");
 
         System.out.println(numeroConta);
-        cadastroPage.clicBotaoFechar().click();
+        cadastroPage.getBotaoFechar().click();
 
         // Realiza Cadastro com Saldo na conta
-        cadastroPage.clicBotaoRegistrar().click();
+        cadastroPage.getBotaoRegistrar().click();
         cadastroPage.getemail().clear();
         cadastroPage.getemail().sendKeys("fernanda@automatizado.com");
         cadastroPage.getNome().clear();
@@ -62,9 +62,9 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         cadastroPage.getconfirmaSenha().sendKeys("1234");
         cadastroPage.getCriarContaComSaldo().click();
         cadastroPage.getCriarContaComSaldo().click();
-        cadastroPage.clicBotaoCadastrar().click();
+        cadastroPage.getBotaoCadastrar().click();
 
-        String numeroConta1 = cadastroPage.numeroDaConta().getText();
+        String numeroConta1 = cadastroPage.getnumeroDaConta().getText();
         String[] separarNumeroDaConta1 = numeroConta1.split("-");
 
         String apenasNumeroDaConta1 = separarNumeroDaConta1[0].replaceAll("[^0-9]", "");
@@ -77,7 +77,7 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
 
         System.out.println(numeroConta1);
         System.out.println("");
-        cadastroPage.clicBotaoFechar().click();
+        cadastroPage.getBotaoFechar().click();
     }
 
     public void brealizarUmaTransferenciaDeValorParaOutra() throws IOException {
@@ -89,21 +89,21 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         digitoDaConta = FilesOperation.getProperties("dadosPrimeiraContaBanco").getProperty("digitoPrimeiraContaBanco");
 
         // Realizara Transferencia
-        loginPage.saldo().getText();
-        transferenciaPage.clicBotaoTransferencia().click();
-        transferenciaPage.numeroConta().sendKeys(numeroDaContaFormatado);
-        transferenciaPage.digito().sendKeys(digitoDaConta);
-        transferenciaPage.valorDaTransferencia().sendKeys("910");
-        transferenciaPage.descricao().sendKeys("Teste transferencia automatizada realizada com sucesso");
-        transferenciaPage.clicBotaoTransferirAgora().click();
-        transferenciaPage.textoTransferenciaRealizada().isDisplayed();
+        loginPage.getsaldo().getText();
+        transferenciaPage.getBotaoTransferencia().click();
+        transferenciaPage.getnumeroConta().sendKeys(numeroDaContaFormatado);
+        transferenciaPage.getdigito().sendKeys(digitoDaConta);
+        transferenciaPage.getvalorDaTransferencia().sendKeys("910");
+        transferenciaPage.getdescricao().sendKeys("Teste transferencia automatizada realizada com sucesso");
+        transferenciaPage.getBotaoTransferirAgora().click();
+        transferenciaPage.getTextoTransferenciaRealizada().isDisplayed();
         String mensagem = "Transferencia realizada com sucesso";
-        Assert.assertEquals(mensagem, transferenciaPage.textoTransferenciaRealizada().getText());
-        transferenciaPage.clicBotaoFechar().click();
-        transferenciaPage.clicBotaoVoltar().click();
-        transferenciaPage.clicBotaoExtrato().click();
-        transferenciaPage.saldoConta().getText();
-        transferenciaPage.clicBotatoSair().click();
+        Assert.assertEquals(mensagem, transferenciaPage.getTextoTransferenciaRealizada().getText());
+        transferenciaPage.getBotaoFechar().click();
+        transferenciaPage.getBotaoVoltar().click();
+        transferenciaPage.getBotaoExtrato().click();
+        transferenciaPage.getSaldoConta().getText();
+        transferenciaPage.getBotatoSair().click();
 
     }
 
@@ -111,18 +111,18 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
 
         loginPage.getEmailLogin().sendKeys("fernanda@automatizado.com");
         loginPage.getSenhaLogin().sendKeys("1234");
-        loginPage.clicBotaoAcessar().click();
-        loginPage.textoBemVindo().getText();
+        loginPage.getBotaoAcessar().click();
+        loginPage.gettextoBemVindo().getText();
 
         String msg = "bem vindo ao BugBank :)";
-        Assert.assertEquals(msg, loginPage.textoBemVindo().getText());
-        loginPage.saldo().getText();
+        Assert.assertEquals(msg, loginPage.gettextoBemVindo().getText());
+        loginPage.getsaldo().getText();
 
-        String saldoConta = loginPage.saldoSegundaConta().getText();
-        String nomeTitularConta = loginPage.nameTitularConta().getText();
+        String saldoConta = loginPage.getsaldoSegundaConta().getText();
+        String nomeTitularConta = loginPage.getnameTitularConta().getText();
 
         String validaSaldo2 = "Saldo em conta " + saldoConta;
-        Assert.assertEquals(validaSaldo2, loginPage.saldo().getText());
+        Assert.assertEquals(validaSaldo2, loginPage.getsaldo().getText());
 
     }
 
@@ -130,50 +130,51 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
 
         loginPage.getEmailLogin().sendKeys("francis@automatizado.com");
         loginPage.getSenhaLogin().sendKeys("1234");
-        loginPage.clicBotaoAcessar().click();
-        loginPage.textoBemVindo().getText();
+        loginPage.getBotaoAcessar().click();
+        loginPage.gettextoBemVindo().getText();
 
         String msg = "bem vindo ao BugBank :)";
-        Assert.assertEquals(msg, loginPage.textoBemVindo().getText());
-        loginPage.saldo().getText();
+        Assert.assertEquals(msg, loginPage.gettextoBemVindo().getText());
+        loginPage.getsaldo().getText();
 
-        String saldoConta = loginPage.saldoSegundaConta().getText();
-        String nomeTitularConta = loginPage.nameTitularConta().getText();
+        String saldoConta = loginPage.getsaldoSegundaConta().getText();
+        String nomeTitularConta = loginPage.getnameTitularConta().getText();
         System.out.println("");
         System.out.println("O nome do titular da conta é :" + nomeTitularConta );
         System.out.println("O saldo atual da conta que recebeu transferencia é :" + saldoConta);
-        System.out.println("Numero da Conta : " + loginPage.numeroComDigitoConta().getText() );
+        System.out.println("Numero da Conta : " + loginPage.getnumeroComDigitoConta().getText() );
         System.out.println("");
         String validaSaldo2 = "Saldo em conta " + saldoConta;
-        Assert.assertEquals(validaSaldo2, loginPage.saldo().getText());
+        Assert.assertEquals(validaSaldo2, loginPage.getsaldo().getText());
 
-        transferenciaPage.clicBotaoExtrato().click();
+        transferenciaPage.getBotaoExtrato().click();
     }
 
     public void wvalidarSaidaDaContaQueRealizouATransferencia(){
         try{
             loginPage.getEmailLogin().sendKeys("fernanda@automatizado.com");
             loginPage.getSenhaLogin().sendKeys("1234");
-            loginPage.clicBotaoAcessar().click();
-            loginPage.textoBemVindo().getText();
+            loginPage.getBotaoAcessar().click();
+            loginPage.gettextoBemVindo().getText();
 
             String msg = "bem vindo ao BugBank :)";
-            Assert.assertEquals(msg, loginPage.textoBemVindo().getText());
-            loginPage.saldo().getText();
+            Assert.assertEquals(msg, loginPage.gettextoBemVindo().getText());
+            loginPage.getsaldo().getText();
 
-            String saldoConta = loginPage.saldoSegundaConta().getText();
-            String nomeTitularConta = loginPage.nameTitularConta().getText();
+            String saldoConta = loginPage.getsaldoSegundaConta().getText();
+            String nomeTitularConta = loginPage.getnameTitularConta().getText();
 
             System.out.println("Nome do Titular da Conta : " + nomeTitularConta);
             System.out.println("Saldo da conta que realizou a trasnferencia : " + saldoConta);
-            System.out.println("Numero da Conta : " + loginPage.numeroComDigitoConta().getText() );
+            System.out.println("Numero da Conta : " + loginPage.getnumeroComDigitoConta().getText() );
 
             String validaSaldo2 = "Saldo em conta " + saldoConta;
-            Assert.assertEquals(validaSaldo2, loginPage.saldo().getText());
+            Assert.assertEquals(validaSaldo2, loginPage.getsaldo().getText());
         }catch(Exception e){
             System.out.println(e);
 
         }
+
 
     }
 
