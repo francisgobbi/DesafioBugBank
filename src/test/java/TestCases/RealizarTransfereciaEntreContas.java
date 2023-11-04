@@ -1,6 +1,10 @@
 package TestCases;
+import Framework.Report.Report;
+import Framework.Report.ReportType;
+import Framework.Report.Screenshot;
 import Tasks.TarefaCriarContasTransferenciaDeValorEntreContas;
-import org.junit.Test;
+import com.aventstack.extentreports.Status;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import Framework.TestOpenLinkBank;
 
@@ -14,38 +18,21 @@ public class RealizarTransfereciaEntreContas extends TestOpenLinkBank {
 
 
     @Test
-    public void acriarDuasContasComSaldoESalvarOsSeusDados() throws IOException {
+    public void criarDuasContasComSaldoERealizarTransferenciaDeValorEntreContas() throws Exception {
         try {
-            transferencia.acriarDuasContasComSaldosESalvarOsSeusDados();
-        }catch (Exception m){
-            System.out.println(m);
-        }
-    }
-    @Test
-    public void brealizarUmaTransferenciaDeValorParaOutra() throws IOException {
-      try {
-          transferencia.brealizarLogin();
-          transferencia.brealizarUmaTransferenciaDeValorParaOutra();
-      }catch (Exception m){
-          System.out.println(m);
-        }
+            Report.createTest("Criar duas contas com saldo", ReportType.SINGLE);
+            Report.createStep("Realizar login Usuário");
+            transferencia.criarDuasContasComSaldosESalvarOsSeusDados();
+            Report.log(Status.PASS, "Contas criadas com sucesso.", Screenshot.captureBase64(driver));
+            transferencia.realizarLogin();
+            transferencia.realizarUmaTransferenciaDeValorParaOutra();
+            transferencia.realizarLoginResultadoTransferencia();
+            transferencia.validarSaidaDaContaQueRealizouATransferencia();
 
-    }
-    @Test
-    public void xvalidarEntradaDaContaEnvolvida() throws IOException {
-        try {
-            transferencia.xrealizarLoginResultadoTransferencia();
         }catch (Exception m){
             System.out.println(m);
         }
     }
-    @Test
-    public void zvalidarSaidaDaContaQueRealizouATransferencia() throws IOException {
-        try {
-            transferencia.wvalidarSaidaDaContaQueRealizouATransferencia();
-        }catch (Exception m){
-            System.out.println(m);
-        }
-    }
+
 
 }

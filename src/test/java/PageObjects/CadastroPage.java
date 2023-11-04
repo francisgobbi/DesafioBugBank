@@ -19,10 +19,6 @@ public class CadastroPage {
         return waits.visibilityOfElement(By.xpath("//button[contains(text(), 'Registrar') and contains(@type, 'button')]"));
     }
 
-    public WebElement getMailCadastro(){
-        return waits.visibilityOfElement(By.xpath(" //form[@class='style__ContainerFormLogin-sc-1wbjw6k-0 eTrcYr']//div//input[@type='email' and @class='input__default' and @name='email']\n"));
-    }
-
     public WebElement getemail(){
         return waits.visibilityOfElement(By.xpath("//form[@class='styles__ContainerFormRegister-sc-7fhc7g-0 keVbpY']//div//input[@type='email' and @class='input__default' and @name='email']"));
     }
@@ -48,10 +44,6 @@ public class CadastroPage {
     }
 
     public WebElement getnumeroDaConta(){
-        return waits.visibilityOfElement(By.id("modalText"));
-    }
-
-    public WebElement digitoDaConta(){
         return waits.visibilityOfElement(By.id("modalText"));
     }
 

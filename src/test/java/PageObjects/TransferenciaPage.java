@@ -19,19 +19,19 @@ public class TransferenciaPage {
         return waits.visibilityOfElement(By.xpath("//div[@class='home__ContainerButton-sc-1auj767-14 ebzpKL'][1]"));
     }
 
-    public WebElement getnumeroConta(){
+    public WebElement getNumeroConta(){
         return waits.visibilityOfElement(By.xpath("//input[@class='input__default' and@name='accountNumber']"));
     }
 
-    public WebElement getdigito(){
+    public WebElement getDigito(){
         return waits.visibilityOfElement(By.xpath("//input[@class='input__default' and@name='digit']"));
     }
 
-    public WebElement getvalorDaTransferencia(){
+    public WebElement getValorDaTransferencia(){
         return waits.visibilityOfElement(By.xpath("//input[@class='input__default' and@name='transferValue']"));
     }
 
-    public WebElement getdescricao(){
+    public WebElement getDescricao(){
         return waits.visibilityOfElement(By.xpath("//input[@class='input__default' and@name='description']"));
     }
 

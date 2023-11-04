@@ -2,8 +2,8 @@ package Framework;
 import Framework.Browser.DriverManager;
 import Framework.Browser.TypeBrowser;
 import Framework.Utils.FilesOperation;
-import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ public class TestOpenLinkBank extends DriverManager {
         return driver;
     }
 
-    @Before
+    @BeforeEach
     public void openLinkBank()  throws IOException {
         String linkUrl = filesOperation.getProperties("urlbanco").getProperty("urlbanco");
         getDriver().get(linkUrl);

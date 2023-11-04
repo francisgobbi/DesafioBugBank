@@ -27,14 +27,14 @@ public class LoginPage {
         return waits.visibilityOfElement(By.xpath("//button[@type='submit' and @class='style__ContainerButton-sc-1wsixal-0 otUnI button__child']"));
     }
 
-    public WebElement gettextoBemVindo(){
+    public WebElement getTextoBemVindo(){
         return waits.visibilityOfElement(By.xpath("//p[contains(text(), 'bem vindo ao BugBank')]"));
     }
-    public WebElement getsaldo(){
+    public WebElement getSaldo(){
         return waits.visibilityOfElement((By.xpath("//p[@id= 'textBalance']")));
     }
 
-    public WebElement getsaldoSegundaConta(){
+    public WebElement getSaldoSegundaConta(){
         return waits.visibilityOfElement((By.xpath("//div//div//p[@id='textBalance']//span")));
 
     }
