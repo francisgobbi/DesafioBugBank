@@ -11,7 +11,7 @@ public class TestOpenLinkBank extends DriverManager {
     private static WebDriver driver;
     private static FilesOperation filesOperation = new FilesOperation();
 
-    public static WebDriver getDriver(){
+    public static WebDriver getDriverManager(){
         driver = getDriver(TypeBrowser.CHROME);
         return driver;
     }
@@ -19,7 +19,7 @@ public class TestOpenLinkBank extends DriverManager {
     @BeforeEach
     public void openLinkBank()  throws IOException {
         String linkUrl = filesOperation.getProperties("urlbanco").getProperty("urlbanco");
-        getDriver().get(linkUrl);
+        getDriverManager().get(linkUrl);
     }
 
     @AfterEach

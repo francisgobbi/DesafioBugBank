@@ -36,7 +36,7 @@ public class CadastroPage {
     }
 
     public WebElement getCriarContaComSaldo(){
-        return driver.findElement(By.xpath("//div//label//label[@id='toggleAddBalance']"));
+        return driver.findElement(By.xpath("//label[@id='toggleAddBalance']"));
     }
 
     public WebElement getBotaoCadastrar(){
@@ -50,5 +50,10 @@ public class CadastroPage {
     public WebElement getBotaoFechar(){
         return waits.visibilityOfElement(By.xpath("//a[@id='btnCloseModal' and @class='styles__Button-sc-8zteav-5 gyHUvN']"));
     }
+
+    public WebElement getAlertCadastroConta(){
+        return waits.visibilityOfElement(By.xpath("//p[@id='modalText']"));
+    }
+
 
 }

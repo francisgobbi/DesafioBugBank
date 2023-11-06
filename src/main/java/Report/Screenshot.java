@@ -1,4 +1,4 @@
-package Framework.Report;
+package Report;
 
 import Framework.Utils.CreateFolders;
 import Framework.Utils.DateTime;
@@ -11,20 +11,21 @@ import org.apache.hc.client5.http.utils.Base64;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-
 import javax.imageio.ImageIO;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
+
 public class Screenshot {
     private static final String PATH_SCREENSHOT =
-            ReportFactory.PATH_REPORT + File.separator + "Screenshot";
+            ReportFactory.PATH_REPORT +
+                       File.separator + "Screenshot";
 
     public static Media capture(WebDriver driver) {
         try {
             CreateFolders.createFolderRepost(PATH_SCREENSHOT);
             File srshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-            String screenshot = PATH_SCREENSHOT + File.separator + "Image_" + DateTime.getDateTimeFormatScreemshot();
+            String screenshot = PATH_SCREENSHOT + File.separator + "Image_" + DateTime.getDateTimeFormatScreemshot() + ".png";
             FileUtils.copyFile(srshot, new File(screenshot));
             return MediaEntityBuilder.createScreenCaptureFromPath(screenshot).build();
         } catch (Exception e) {

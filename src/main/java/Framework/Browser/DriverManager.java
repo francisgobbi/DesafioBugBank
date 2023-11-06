@@ -4,8 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.opera.OperaOptions;
 
 public class DriverManager {
 
@@ -18,28 +21,38 @@ public class DriverManager {
             case CHROME :
 
                 WebDriverManager.chromedriver().setup();
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("--start-maximized");
-                options.addArguments("--incognito");
-                driver = new ChromeDriver(options);
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--start-maximized");
+                chromeOptions.addArguments("--incognito");
+                chromeOptions.addArguments("--remote-allow-origins=*");
+                driver = new ChromeDriver(chromeOptions);
                 break;
 
             case FIREFOX :
 
                 WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.addArguments("--start-maximized");
+                firefoxOptions.addArguments("--incognito");
+                firefoxOptions.addArguments("--remote-allow-origins=*");
+                driver = new FirefoxDriver(firefoxOptions);
                 break;
 
             case EDGE :
 
                 WebDriverManager.edgedriver().setup();
-                driver = new EdgeDriver();
+                EdgeOptions edgeOptions = new EdgeOptions();
+                driver = new EdgeDriver(edgeOptions);
                 break;
 
             case OPERA :
 
                 WebDriverManager.operadriver().setup();
-                driver = new OperaDriver();
+                OperaOptions operaOptions = new OperaOptions();
+                operaOptions.addArguments("--start-maximized");
+                operaOptions.addArguments("--incognito");
+                operaOptions.addArguments("--remote-allow-origins=*");
+                driver = new OperaDriver(operaOptions);
                 break;
 
         }

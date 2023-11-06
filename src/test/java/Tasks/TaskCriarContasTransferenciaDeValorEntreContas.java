@@ -3,21 +3,21 @@ package Tasks;
 import PageObjects.CadastroPage;
 import PageObjects.LoginPage;
 import PageObjects.TransferenciaPage;
+import Validations.CadastrarContaValidations;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import Framework.Utils.FilesOperation;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
 
-public class TarefaCriarContasTransferenciaDeValorEntreContas {
+public class TaskCriarContasTransferenciaDeValorEntreContas {
 
     private WebDriver driver;
     private CadastroPage cadastroPage;
     private LoginPage loginPage;
     private TransferenciaPage transferenciaPage;
 
-    public TarefaCriarContasTransferenciaDeValorEntreContas(WebDriver driver){
+    public TaskCriarContasTransferenciaDeValorEntreContas(WebDriver driver){
 
         this.driver =driver;
         cadastroPage = new CadastroPage(this.driver);
@@ -38,7 +38,6 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         cadastroPage.getBotaoCadastrar().click();
 
         // Assert conta criada com sucesso
-
         String numeroConta = cadastroPage.getnumeroDaConta().getText();
         String[] separarNumeroDaConta = numeroConta.split("-");
         String apenasNumeroDaConta = separarNumeroDaConta[0].replaceAll("[^0-9]", "");
@@ -50,6 +49,7 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         FilesOperation.setProperty("dadosPrimeiraContaBanco", "saldoPrimeiraContaBanco", "R$ 1.000,00");
 
         System.out.println(numeroConta);
+        CadastrarContaValidations.CadastrarContaValidationsOK();
         cadastroPage.getBotaoFechar().click();
 
         // Realiza Cadastro com Saldo na conta
@@ -63,7 +63,6 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
         cadastroPage.getSenha().sendKeys("1234");
         cadastroPage.getconfirmaSenha().clear();
         cadastroPage.getconfirmaSenha().sendKeys("1234");
-        //cadastroPage.getCriarContaComSaldo().click();
         //cadastroPage.getCriarContaComSaldo().click();
         cadastroPage.getBotaoCadastrar().click();
         // Assert conta criada com sucesso
@@ -81,6 +80,7 @@ public class TarefaCriarContasTransferenciaDeValorEntreContas {
 
         System.out.println(numeroConta1);
         System.out.println("");
+        CadastrarContaValidations.CadastrarContaValidationsOK();
         cadastroPage.getBotaoFechar().click();
     }
 

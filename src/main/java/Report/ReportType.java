@@ -1,4 +1,4 @@
-package Framework.Report;
+package Report;
 
 public enum ReportType {
     SINGLE,
