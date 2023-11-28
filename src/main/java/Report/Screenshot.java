@@ -43,7 +43,6 @@ public class Screenshot {
             String base64Img = Base64.encodeBase64String(stream.toByteArray());
             return MediaEntityBuilder.createScreenCaptureFromBase64String(base64Img).build();
         } catch (Exception e) {
-            // TODO: handle exception
             String message = "Ocorreu um erro ao capturar a tela: " + e.getMessage();
         }
 

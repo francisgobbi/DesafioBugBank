@@ -39,12 +39,12 @@ public class LoginPage {
 
     }
 
-    public WebElement getnameTitularConta(){
+    public WebElement getNameTitularConta(){
         return waits.visibilityOfElement((By.xpath(" //div[@class='home__ContainerText-sc-1auj767-7 iDA-Ddb']//p[@id='textName']")));
 
     }
 
-    public WebElement getnumeroComDigitoConta(){
+    public WebElement getNumeroComDigitoConta(){
         return waits.visibilityOfElement((By.xpath(" //p[@id='textAccountNumber']//span")));
 
     }

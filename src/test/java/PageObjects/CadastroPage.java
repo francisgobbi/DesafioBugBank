@@ -19,7 +19,7 @@ public class CadastroPage {
         return waits.visibilityOfElement(By.xpath("//button[contains(text(), 'Registrar') and contains(@type, 'button')]"));
     }
 
-    public WebElement getemail(){
+    public WebElement getEmail(){
         return waits.visibilityOfElement(By.xpath("//form[@class='styles__ContainerFormRegister-sc-7fhc7g-0 keVbpY']//div//input[@type='email' and @class='input__default' and @name='email']"));
     }
 
@@ -31,7 +31,7 @@ public class CadastroPage {
         return waits.visibilityOfElement(By.xpath("//form[@class='styles__ContainerFormRegister-sc-7fhc7g-0 keVbpY']//div//div//input[@name='password']"));
     }
 
-    public WebElement getconfirmaSenha(){
+    public WebElement getConfirmaSenha(){
         return waits.visibilityOfElement(By.xpath("//div//input[@placeholder='Informe a confirmação da senha']"));
     }
 
@@ -43,7 +43,7 @@ public class CadastroPage {
         return waits.visibilityOfElement(By.xpath("//button[normalize-space()='Cadastrar']"));
     }
 
-    public WebElement getnumeroDaConta(){
+    public WebElement getNumeroDaConta(){
         return waits.visibilityOfElement(By.id("modalText"));
     }
 

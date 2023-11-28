@@ -29,16 +29,16 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
     public void criarDuasContasComSaldosESalvarOsSeusDados() throws IOException {
 
         cadastroPage.getBotaoRegistrar().click();
-        cadastroPage.getemail().sendKeys("francis@automatizado.com");
+        cadastroPage.getEmail().sendKeys("francis@automatizado.com");
         cadastroPage.getNome().sendKeys("Francis");
         String nomeTitularPrimeiraConta =  "Francis";
         cadastroPage.getSenha().sendKeys("1234");
-        cadastroPage.getconfirmaSenha().sendKeys("1234");
+        cadastroPage.getConfirmaSenha().sendKeys("1234");
         cadastroPage.getCriarContaComSaldo().click();
         cadastroPage.getBotaoCadastrar().click();
 
         // Assert conta criada com sucesso
-        String numeroConta = cadastroPage.getnumeroDaConta().getText();
+        String numeroConta = cadastroPage.getNumeroDaConta().getText();
         String[] separarNumeroDaConta = numeroConta.split("-");
         String apenasNumeroDaConta = separarNumeroDaConta[0].replaceAll("[^0-9]", "");
         String digitoDaConta = separarNumeroDaConta[1].replaceAll("[^0-9]", "");
@@ -54,20 +54,20 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
 
         // Realiza Cadastro com Saldo na conta
         cadastroPage.getBotaoRegistrar().click();
-        cadastroPage.getemail().clear();
-        cadastroPage.getemail().sendKeys("fernanda@automatizado.com");
+        cadastroPage.getEmail().clear();
+        cadastroPage.getEmail().sendKeys("fernanda@automatizado.com");
         cadastroPage.getNome().clear();
         cadastroPage.getNome().sendKeys("Fernanda");
         String nomeTitularSegundaConta = "Fernanda";
         cadastroPage.getSenha().clear();
         cadastroPage.getSenha().sendKeys("1234");
-        cadastroPage.getconfirmaSenha().clear();
-        cadastroPage.getconfirmaSenha().sendKeys("1234");
+        cadastroPage.getConfirmaSenha().clear();
+        cadastroPage.getConfirmaSenha().sendKeys("1234");
         //cadastroPage.getCriarContaComSaldo().click();
         cadastroPage.getBotaoCadastrar().click();
         // Assert conta criada com sucesso
 
-        String numeroConta1 = cadastroPage.getnumeroDaConta().getText();
+        String numeroConta1 = cadastroPage.getNumeroDaConta().getText();
         String[] separarNumeroDaConta1 = numeroConta1.split("-");
 
         String apenasNumeroDaConta1 = separarNumeroDaConta1[0].replaceAll("[^0-9]", "");
@@ -128,7 +128,7 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
         loginPage.getSaldo().getText();
 
         String saldoConta = loginPage.getSaldoSegundaConta().getText();
-        String nomeTitularConta = loginPage.getnameTitularConta().getText();
+        String nomeTitularConta = loginPage.getNameTitularConta().getText();
 
         String validaSaldo2 = "Saldo em conta " + saldoConta;
         Assertions.assertEquals(validaSaldo2, loginPage.getSaldo().getText());
@@ -147,11 +147,11 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
         loginPage.getSaldo().getText();
 
         String saldoConta = loginPage.getSaldoSegundaConta().getText();
-        String nomeTitularConta = loginPage.getnameTitularConta().getText();
+        String nomeTitularConta = loginPage.getNameTitularConta().getText();
         System.out.println("");
         System.out.println("O nome do titular da conta é :" + nomeTitularConta );
         System.out.println("O saldo atual da conta que recebeu transferencia é :" + saldoConta);
-        System.out.println("Numero da Conta : " + loginPage.getnumeroComDigitoConta().getText() );
+        System.out.println("Numero da Conta : " + loginPage.getNumeroComDigitoConta().getText() );
         System.out.println("");
         String validaSaldo2 = "Saldo em conta " + saldoConta;
         Assertions.assertEquals(validaSaldo2, loginPage.getSaldo().getText());
@@ -172,11 +172,11 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
             loginPage.getSaldo().getText();
 
             String saldoConta = loginPage.getSaldoSegundaConta().getText();
-            String nomeTitularConta = loginPage.getnameTitularConta().getText();
+            String nomeTitularConta = loginPage.getNameTitularConta().getText();
 
             System.out.println("Nome do Titular da Conta : " + nomeTitularConta);
             System.out.println("Saldo da conta que realizou a trasnferencia : " + saldoConta);
-            System.out.println("Numero da Conta : " + loginPage.getnumeroComDigitoConta().getText() );
+            System.out.println("Numero da Conta : " + loginPage.getNumeroComDigitoConta().getText() );
 
             String validaSaldo2 = "Saldo em conta " + saldoConta;
             Assertions.assertEquals(validaSaldo2, loginPage.getSaldo().getText());
