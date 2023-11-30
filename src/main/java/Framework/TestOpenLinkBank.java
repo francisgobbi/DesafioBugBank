@@ -25,7 +25,7 @@ public class TestOpenLinkBank extends DriverManager {
     @AfterEach
     public void finishDriver(){
             if (driver != null) {
-                driver.close();
+                driver.quit();
             }
 
     }
