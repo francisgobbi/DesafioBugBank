@@ -55,7 +55,6 @@ public class TransferenciaPage {
         return waits.visibilityOfElement(By.xpath("//a[@id='btn-EXTRATO']"));
     }
 
-
     public WebElement getSaldoConta(){
         return waits.visibilityOfElement((By.xpath("//p[@id= 'textBalanceAvailable']")));
     }

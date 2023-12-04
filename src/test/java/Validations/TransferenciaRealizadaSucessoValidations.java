@@ -8,21 +8,18 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import Report.Screenshot;
 
-public class TransferenciaRealizadaSucessoValidations {
+public class TransferenciaRealizadaSucessoValidations  {
 
-    private static WebDriver driver;
+    private WebDriver driver;
+    private CadastroPage cadastroPage;
+    private  TransferenciaPage transferenciaPage;
 
-    private static CadastroPage cadastroPage;
-
-    private static TransferenciaPage transferenciaPage;
-
-    public void TransferenciaRealizadaSucesso(WebDriver driver){
+    public TransferenciaRealizadaSucessoValidations(WebDriver driver){
         this.driver = driver;
         cadastroPage = new CadastroPage(this.driver);
-
     }
 
-    public static void TransferenciaRealizadaSucessoOK(){
+    public void TransferenciaRealizadaSucessoOK(){
         try{
             String mensagem = "Transferencia realizada com sucesso";
             Assertions.assertEquals(mensagem, transferenciaPage.getTextoTransferenciaRealizada().getText());

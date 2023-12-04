@@ -8,25 +8,28 @@ import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
-public class SaldoContaValidations {
 
-    private static WebDriver driver;
-    private static CadastroPage cadastroPage;
-    private static LoginPage loginPage;
-
-    public void SaldoContaValidations(WebDriver driver){
+public class SaldoContaValidations  {
+    private WebDriver driver;
+    public CadastroPage cadastroPage;
+    public LoginPage loginPage;
+    public SaldoContaValidations(WebDriver driver){
         this.driver = driver;
         cadastroPage = new CadastroPage(this.driver);
         loginPage = new LoginPage(this.driver);
-
     }
 
-    public static void SaldoContaValidationsOK(){
+    public void SaldoContaValidationsOK(String email, String senha){
+
         try{
-            String saldoConta = loginPage.getSaldoSegundaConta().getText();
-            String validaSaldo2 = "Saldo em conta " + saldoConta;
-            Assertions.assertEquals(validaSaldo2, loginPage.getSaldo().getText());
-            Assertions.assertTrue(loginPage.getSaldoSegundaConta().isDisplayed());
+            loginPage.getEmailLogin().sendKeys(email);
+            loginPage.getSenhaLogin().sendKeys(senha);
+            loginPage.getBotaoAcessar().click();
+
+            String saldoConta = loginPage.getSaldoConta().getText();
+            String validaSaldo = "Saldo em conta " + saldoConta;
+            Assertions.assertEquals(validaSaldo, loginPage.getTextSaldoConta().getText());
+            Assertions.assertTrue(loginPage.getSaldoConta().isDisplayed());
             Report.log(Status.PASS, "Saldo em conta realizado com sucesso.", Screenshot.captureBase64(driver));
         } catch (Exception e) {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));

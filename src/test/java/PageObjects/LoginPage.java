@@ -22,11 +22,6 @@ public class LoginPage {
     public WebElement getSenhaLogin(){
         return waits.visibilityOfElement(By.xpath("(//input[@type='password' and @class='input__default'])[1]"));
     }
-
-    public WebElement getBotaoAcessar(){
-        return waits.visibilityOfElement(By.xpath("//button[@type='submit' and @class='style__ContainerButton-sc-1wsixal-0 otUnI button__child']"));
-    }
-
     public WebElement getTextoBemVindo(){
         return waits.visibilityOfElement(By.xpath("//p[contains(text(), 'bem vindo ao BugBank')]"));
     }
@@ -34,7 +29,7 @@ public class LoginPage {
         return waits.visibilityOfElement((By.xpath("//p[@id= 'textBalance']")));
     }
 
-    public WebElement getSaldoSegundaConta(){
+    public WebElement getSaldoConta(){
         return waits.visibilityOfElement((By.xpath("//div//div//p[@id='textBalance']//span")));
 
     }
@@ -47,6 +42,15 @@ public class LoginPage {
     public WebElement getNumeroComDigitoConta(){
         return waits.visibilityOfElement((By.xpath(" //p[@id='textAccountNumber']//span")));
 
+    }
+
+    public WebElement getTextSaldoConta(){
+        return waits.visibilityOfElement((By.xpath("//p[@id='textBalance']")));
+
+    }
+
+    public WebElement getBotaoAcessar(){
+        return waits.visibilityOfElement(By.xpath("//button[contains(text(), 'Acessar') and contains(@type, 'submit')]"));
     }
 
 }

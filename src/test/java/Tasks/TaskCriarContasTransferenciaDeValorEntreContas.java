@@ -3,11 +3,7 @@ package Tasks;
 import PageObjects.CadastroPage;
 import PageObjects.LoginPage;
 import PageObjects.TransferenciaPage;
-import Validations.BemVindoValidations;
-import Validations.CadastrarContaValidations;
-import Validations.SaldoContaValidations;
-import Validations.TransferenciaRealizadaSucessoValidations;
-import org.junit.jupiter.api.Assertions;
+import Validations.*;
 import org.openqa.selenium.WebDriver;
 import Framework.Utils.FilesOperation;
 
@@ -19,6 +15,15 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
     private CadastroPage cadastroPage;
     private LoginPage loginPage;
     private TransferenciaPage transferenciaPage;
+    private CadastrarContaValidations cadastrarContaValidations;
+    private SaldoContaValidations saldoContaValidations;
+    private BemVindoValidations bemVindoValidations;
+    private TransferenciaRealizadaSucessoValidations transferenciaRealizadaSucessoValidations;
+
+    String emailF = "francis@automatizado.com";
+    String senhaF = "1234";
+    String emailFer = "fernanda@automatizado.com";
+    String senhaFer = "1234";
 
     public TaskCriarContasTransferenciaDeValorEntreContas(WebDriver driver){
 
@@ -26,17 +31,20 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
         cadastroPage = new CadastroPage(this.driver);
         loginPage = new LoginPage(this.driver);
         transferenciaPage = new TransferenciaPage(this.driver);
+        cadastrarContaValidations = new CadastrarContaValidations(this.driver);
+        saldoContaValidations = new SaldoContaValidations(this.driver);
+        bemVindoValidations = new BemVindoValidations(this.driver);
+        transferenciaRealizadaSucessoValidations = new TransferenciaRealizadaSucessoValidations(this.driver);
     }
 
 
     public void criarDuasContasComSaldosESalvarOsSeusDados() throws IOException {
-
-        cadastroPage.getBotaoRegistrar().click();
-        cadastroPage.getEmail().sendKeys("francis@automatizado.com");
-        cadastroPage.getNome().sendKeys("Francis");
         String nomeTitularPrimeiraConta =  "Francis";
-        cadastroPage.getSenha().sendKeys("1234");
-        cadastroPage.getConfirmaSenha().sendKeys("1234");
+        cadastroPage.getBotaoRegistrar().click();
+        cadastroPage.getEmail().sendKeys(emailF);
+        cadastroPage.getNome().sendKeys("Francis");
+        cadastroPage.getSenha().sendKeys(senhaF);
+        cadastroPage.getConfirmaSenha().sendKeys(senhaF);
         cadastroPage.getCriarContaComSaldo().click();
         cadastroPage.getBotaoCadastrar().click();
 
@@ -52,21 +60,23 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
         FilesOperation.setProperty("dadosPrimeiraContaBanco", "saldoPrimeiraContaBanco", "R$ 1.000,00");
 
         System.out.println(numeroConta);
-        CadastrarContaValidations.CadastrarContaValidationsOK();
+        cadastrarContaValidations.CadastrarContaValidationsOK();
         cadastroPage.getBotaoFechar().click();
+        saldoContaValidations.SaldoContaValidationsOK(emailF,senhaF);
+        transferenciaPage.getBotatoSair().click();
 
         // Realiza Cadastro com Saldo na conta
         cadastroPage.getBotaoRegistrar().click();
         cadastroPage.getEmail().clear();
-        cadastroPage.getEmail().sendKeys("fernanda@automatizado.com");
+        cadastroPage.getEmail().sendKeys(emailFer);
         cadastroPage.getNome().clear();
         cadastroPage.getNome().sendKeys("Fernanda");
         String nomeTitularSegundaConta = "Fernanda";
         cadastroPage.getSenha().clear();
-        cadastroPage.getSenha().sendKeys("1234");
+        cadastroPage.getSenha().sendKeys(senhaFer);
         cadastroPage.getConfirmaSenha().clear();
-        cadastroPage.getConfirmaSenha().sendKeys("1234");
-        //cadastroPage.getCriarContaComSaldo().click();
+        cadastroPage.getConfirmaSenha().sendKeys(senhaFer);
+        cadastroPage.getCriarContaComSaldo().click();
         cadastroPage.getBotaoCadastrar().click();
 
         String numeroConta1 = cadastroPage.getNumeroDaConta().getText();
@@ -82,8 +92,10 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
 
         System.out.println(numeroConta1);
         System.out.println("");
-        CadastrarContaValidations.CadastrarContaValidationsOK();
+        cadastrarContaValidations.CadastrarContaValidationsOK();
         cadastroPage.getBotaoFechar().click();
+        saldoContaValidations.SaldoContaValidationsOK(emailFer,senhaFer );
+        transferenciaPage.getBotatoSair().click();
     }
 
     public void realizarUmaTransferenciaDeValorParaOutra() throws IOException {
@@ -107,7 +119,7 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
             transferenciaPage.getDescricao().sendKeys("Teste transferencia automatizada realizada com sucesso");
             transferenciaPage.getBotaoTransferirAgora().click();
             transferenciaPage.getTextoTransferenciaRealizada().isDisplayed();
-            TransferenciaRealizadaSucessoValidations.TransferenciaRealizadaSucessoOK();
+            transferenciaRealizadaSucessoValidations.TransferenciaRealizadaSucessoOK();
             transferenciaPage.getBotaoFechar().click();
             transferenciaPage.getBotaoVoltar().click();
             transferenciaPage.getBotaoExtrato().click();
@@ -119,26 +131,25 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
 
     public void realizarLogin() throws IOException {
 
-        loginPage.getEmailLogin().sendKeys("fernanda@automatizado.com");
-        loginPage.getSenhaLogin().sendKeys("1234");
+        loginPage.getEmailLogin().sendKeys(emailFer);
+        loginPage.getSenhaLogin().sendKeys(senhaFer);
         loginPage.getBotaoAcessar().click();
         loginPage.getTextoBemVindo().getText();
 
-        BemVindoValidations.BemVindoValidationsOK();
-
-        SaldoContaValidations.SaldoContaValidationsOK();
+        bemVindoValidations.BemVindoValidationsOK();
+        saldoContaValidations.SaldoContaValidationsOK(emailFer,senhaFer);
 
     }
 
     public void realizarLoginResultadoTransferencia() throws IOException {
 
-        loginPage.getEmailLogin().sendKeys("francis@automatizado.com");
-        loginPage.getSenhaLogin().sendKeys("1234");
+        loginPage.getEmailLogin().sendKeys(emailF);
+        loginPage.getSenhaLogin().sendKeys(senhaF);
         loginPage.getBotaoAcessar().click();
         loginPage.getTextoBemVindo().getText();
-        BemVindoValidations.BemVindoValidationsOK();
+        bemVindoValidations.BemVindoValidationsOK();
 
-        String saldoConta = loginPage.getSaldoSegundaConta().getText();
+        String saldoConta = loginPage.getSaldoConta().getText();
         String nomeTitularConta = loginPage.getNameTitularConta().getText();
         System.out.println("");
         System.out.println("O nome do titular da conta é :" + nomeTitularConta );
@@ -146,33 +157,32 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
         System.out.println("Numero da Conta : " + loginPage.getNumeroComDigitoConta().getText() );
         System.out.println("");
 
-        SaldoContaValidations.SaldoContaValidationsOK();
+        saldoContaValidations.SaldoContaValidationsOK(emailF,senhaF);
         transferenciaPage.getBotaoExtrato().click();
         transferenciaPage.getBotatoSair().click();
     }
 
     public void validarSaidaDaContaQueRealizouATransferencia(){
         try{
-            loginPage.getEmailLogin().sendKeys("fernanda@automatizado.com");
-            loginPage.getSenhaLogin().sendKeys("1234");
+            loginPage.getEmailLogin().sendKeys(emailFer);
+            loginPage.getSenhaLogin().sendKeys(senhaFer);
             loginPage.getBotaoAcessar().click();
             loginPage.getTextoBemVindo().getText();
 
-            BemVindoValidations.BemVindoValidationsOK();
+            bemVindoValidations.BemVindoValidationsOK();
 
-            String saldoConta = loginPage.getSaldoSegundaConta().getText();
+            String saldoConta = loginPage.getSaldoConta().getText();
             String nomeTitularConta = loginPage.getNameTitularConta().getText();
             System.out.println("Nome do Titular da Conta : " + nomeTitularConta);
             System.out.println("Saldo da conta que realizou a trasnferencia : " + saldoConta);
             System.out.println("Numero da Conta : " + loginPage.getNumeroComDigitoConta().getText() );
 
-            SaldoContaValidations.SaldoContaValidationsOK();
+            saldoContaValidations.SaldoContaValidationsOK(emailFer,senhaFer);
 
         }catch(Exception e){
             System.out.println(e);
 
         }
-
 
     }
 

@@ -6,15 +6,14 @@ import Tasks.TaskCriarContasTransferenciaDeValorEntreContas;
 import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import Framework.TestOpenLinkBank;
+import Framework.TestBase;
 
 
-public class TestRealizarTransfereciaEntreContas extends TestOpenLinkBank {
+public class TestRealizarTransfereciaEntreContas extends TestBase {
 
     private WebDriver driver = getDriverManager();
 
     TaskCriarContasTransferenciaDeValorEntreContas transferencia = new TaskCriarContasTransferenciaDeValorEntreContas(driver);
-
 
     @Test
     public void criarDuasContasComSaldoERealizarTransferenciaDeValorEntreContas() throws Exception {
@@ -39,6 +38,4 @@ public class TestRealizarTransfereciaEntreContas extends TestOpenLinkBank {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.capture(driver));
         }
     }
-
-
 }

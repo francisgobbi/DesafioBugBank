@@ -1,5 +1,6 @@
 package Validations;
 
+import Framework.TestBase;
 import Report.Report;
 import Report.Screenshot;
 import PageObjects.CadastroPage;
@@ -9,22 +10,21 @@ import org.openqa.selenium.WebDriver;
 
 public class CadastrarContaValidations {
 
-    private static WebDriver driver;
+    private WebDriver driver;
 
-    private static CadastroPage cadastroPage;
+    private CadastroPage cadastroPage;
 
-    public void CadastrarContaValidations(WebDriver driver){
+    public CadastrarContaValidations(WebDriver driver){
        this.driver = driver;
        cadastroPage = new CadastroPage(this.driver);
-
     }
 
-    public static void CadastrarContaValidationsOK(){
+    public void CadastrarContaValidationsOK(){
         try{
             Assertions.assertTrue(cadastroPage.getAlertCadastroConta().isDisplayed());
-             Report.log(Status.PASS, "Login efetuado com sucesso.", Screenshot.captureBase64(driver));
+            Report.log(Status.PASS, "Login efetuado com sucesso.", Screenshot.captureBase64(driver));
         } catch (Exception e) {
-             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
      }
     }
 

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import java.io.IOException;
 
-public class TestOpenLinkBank extends DriverManager {
+public class TestBase extends DriverManager {
     private static WebDriver driver;
     private static FilesOperation filesOperation = new FilesOperation();
 
