@@ -39,6 +39,7 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
 
 
     public void criarDuasContasComSaldosESalvarOsSeusDados() throws IOException {
+
         String nomeTitularPrimeiraConta =  "Francis";
         cadastroPage.getBotaoRegistrar().click();
         cadastroPage.getEmail().sendKeys(emailF);
@@ -126,10 +127,40 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
             transferenciaPage.getSaldoConta().getText();
             transferenciaPage.getBotatoSair().click();
         }
-
     }
 
     public void realizarLogin() throws IOException {
+
+        loginPage.getEmailLogin().sendKeys(emailFer);
+        loginPage.getSenhaLogin().sendKeys(senhaFer);
+        loginPage.getBotaoAcessar().click();
+        loginPage.getTextoBemVindo().getText();
+
+        bemVindoValidations.BemVindoValidationsOK();
+
+    }
+    public void realizarLoginCadastrar() throws IOException {
+
+        loginPage.getEmailLogin().sendKeys(emailFer);
+        loginPage.getSenhaLogin().sendKeys(senhaFer);
+        loginPage.getBotaoAcessar().click();
+        loginPage.getTextoBemVindo().getText();
+
+        bemVindoValidations.BemVindoValidationsOK();
+        cadastroPage.getBotaoCadastrar().click();
+    }
+
+    public void NegativeLogin() throws IOException {
+
+        loginPage.getEmailLogin().sendKeys("teste@automacao.com");
+        loginPage.getSenhaLogin().sendKeys("12345");
+        loginPage.getBotaoAcessar().click();
+
+        bemVindoValidations.BemVindoValidationsOK();
+
+    }
+
+    public void realizarLoginSaldoEmConta() throws IOException {
 
         loginPage.getEmailLogin().sendKeys(emailFer);
         loginPage.getSenhaLogin().sendKeys(senhaFer);
@@ -141,13 +172,23 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
 
     }
 
-    public void realizarLoginResultadoTransferencia() throws IOException {
+    public void realizarLoginSaldoEmContaF() throws IOException {
 
         loginPage.getEmailLogin().sendKeys(emailF);
         loginPage.getSenhaLogin().sendKeys(senhaF);
         loginPage.getBotaoAcessar().click();
         loginPage.getTextoBemVindo().getText();
+
         bemVindoValidations.BemVindoValidationsOK();
+        saldoContaValidations.SaldoContaValidationsOK(emailF,senhaF);
+
+
+    }
+
+
+    public void realizarLoginResultadoTransferencia() throws IOException {
+
+        realizarLoginSaldoEmContaF();
 
         String saldoConta = loginPage.getSaldoConta().getText();
         String nomeTitularConta = loginPage.getNameTitularConta().getText();
@@ -164,12 +205,7 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
 
     public void validarSaidaDaContaQueRealizouATransferencia(){
         try{
-            loginPage.getEmailLogin().sendKeys(emailFer);
-            loginPage.getSenhaLogin().sendKeys(senhaFer);
-            loginPage.getBotaoAcessar().click();
-            loginPage.getTextoBemVindo().getText();
-
-            bemVindoValidations.BemVindoValidationsOK();
+            realizarLoginSaldoEmConta();
 
             String saldoConta = loginPage.getSaldoConta().getText();
             String nomeTitularConta = loginPage.getNameTitularConta().getText();
@@ -178,6 +214,7 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
             System.out.println("Numero da Conta : " + loginPage.getNumeroComDigitoConta().getText() );
 
             saldoContaValidations.SaldoContaValidationsOK(emailFer,senhaFer);
+            cadastroPage.getBotaoCadastrar().click();
 
         }catch(Exception e){
             System.out.println(e);

@@ -35,6 +35,4 @@ public class SaldoContaValidations  {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
         }
     }
-
-
 }
