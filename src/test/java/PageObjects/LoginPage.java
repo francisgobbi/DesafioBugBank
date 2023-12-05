@@ -53,4 +53,8 @@ public class LoginPage {
         return waits.visibilityOfElement(By.xpath("//button[contains(text(), 'Acessar') and contains(@type, 'submit')]"));
     }
 
+    public WebElement getMensagemLoginIvalido(){
+        return waits.visibilityOfElement(By.xpath("//*[@id='modalText']"));
+    }
+
 }
