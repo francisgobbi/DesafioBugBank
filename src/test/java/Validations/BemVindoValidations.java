@@ -2,11 +2,11 @@ package Validations;
 
 import PageObjects.CadastroPage;
 import PageObjects.LoginPage;
-import Report.Report;
+import Framework.Report.Report;
 import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import Report.Screenshot;
+import Framework.Report.Screenshot;
 public class BemVindoValidations  {
 
     private WebDriver driver;

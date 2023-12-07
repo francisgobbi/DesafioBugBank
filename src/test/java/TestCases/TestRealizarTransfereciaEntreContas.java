@@ -1,9 +1,7 @@
 package TestCases;
-import Report.Report;
-import Report.ReportType;
-import Report.Screenshot;
+import Framework.Report.Report;
+import Framework.Report.ReportType;
 import Tasks.TaskCriarContasTransferenciaDeValorEntreContas;
-import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import Framework.TestBase;

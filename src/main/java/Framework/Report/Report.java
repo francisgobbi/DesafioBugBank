@@ -1,9 +1,9 @@
-package Report;
+package Framework.Report;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-
+import com.aventstack.extentreports.model.Media;
 
 public class Report {
 
@@ -27,7 +27,7 @@ public class Report {
             ExtentTest child = parentTest.get().createNode(stepName);
             test.set(child);
         } catch (NullPointerException e) {
-            System.out.println(e.getMessage());
+            // TODO: handle exception
         }
     }
 
@@ -43,7 +43,7 @@ public class Report {
         test.get().log(status, message);
     }
 
-    public static void log(Status status, String message, com.aventstack.extentreports.model.Media capture) {
+    public static void log(Status status, String message, Media capture) {
         if(instanceDoesntExist())
             return;
         test.get().log(status, message, capture);
@@ -54,5 +54,4 @@ public class Report {
             return;
         extent.flush();
     }
-
 }

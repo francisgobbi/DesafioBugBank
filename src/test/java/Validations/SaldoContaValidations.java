@@ -2,8 +2,8 @@ package Validations;
 
 import PageObjects.CadastroPage;
 import PageObjects.LoginPage;
-import Report.Report;
-import Report.Screenshot;
+import Framework.Report.Report;
+import Framework.Report.Screenshot;
 import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;

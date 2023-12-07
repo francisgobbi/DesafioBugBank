@@ -2,7 +2,7 @@ package Framework.Utils;
 
 import java.io.File;
 
-public class CreateFolders {
+public class CreateFolder {
 
     public static void createFolderRepost(String path) {
         File pathReport = new File(path);

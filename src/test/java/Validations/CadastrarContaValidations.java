@@ -1,8 +1,7 @@
 package Validations;
 
-import Framework.TestBase;
-import Report.Report;
-import Report.Screenshot;
+import Framework.Report.Report;
+import Framework.Report.Screenshot;
 import PageObjects.CadastroPage;
 import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Assertions;
