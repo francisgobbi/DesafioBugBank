@@ -18,6 +18,7 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
     private CadastrarContaValidations cadastrarContaValidations;
     private SaldoContaValidations saldoContaValidations;
     private BemVindoValidations bemVindoValidations;
+    private LoginSenhaIvalido loginSenhaIvalido;
     private TransferenciaRealizadaSucessoValidations transferenciaRealizadaSucessoValidations;
 
     String emailF = "francis@automatizado.com";
@@ -34,6 +35,7 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
         cadastrarContaValidations = new CadastrarContaValidations(this.driver);
         saldoContaValidations = new SaldoContaValidations(this.driver);
         bemVindoValidations = new BemVindoValidations(this.driver);
+        loginSenhaIvalido = new LoginSenhaIvalido(this.driver);
         transferenciaRealizadaSucessoValidations = new TransferenciaRealizadaSucessoValidations(this.driver);
     }
 
@@ -155,8 +157,8 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
         loginPage.getEmailLogin().sendKeys("teste@automacao.com");
         loginPage.getSenhaLogin().sendKeys("12345");
         loginPage.getBotaoAcessar().click();
-
-        bemVindoValidations.BemVindoValidationsOK();
+        loginSenhaIvalido.LoginSenhaIvalidoOK();
+        cadastroPage.getBotaoFechar().click();
 
     }
 

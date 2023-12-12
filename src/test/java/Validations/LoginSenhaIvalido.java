@@ -21,8 +21,9 @@ public class LoginSenhaIvalido {
 
     public void LoginSenhaIvalidoOK(){
         try{
-            String msg = "Usuário ou senha inválido. Tente novamente ou verifique suas informações!";
-            Assertions.assertEquals(msg, loginPage.getMensagemLoginIvalido().getText());
+            String msg = "Usuário ou senha inválido.\nTente novamente ou verifique suas informações!";
+            String msg2 = loginPage.getMensagemLoginIvalido().getText().toString();
+            Assertions.assertEquals(msg, msg2);
             Report.log(Status.PASS, "Login ivalido.", Screenshot.captureBase64(driver));
         } catch (Exception e) {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
