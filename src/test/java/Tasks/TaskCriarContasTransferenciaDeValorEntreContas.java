@@ -161,9 +161,7 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
         loginPage.getSenhaLogin().sendKeys(senhaSegundaConta);
         loginPage.getBotaoAcessar().click();
         loginPage.getTextoBemVindo().getText();
-
         bemVindoValidations.BemVindoValidationsOK();
-        cadastroPage.getBotaoCadastrar().click();
     }
 
     public void NegativeLogin() {
