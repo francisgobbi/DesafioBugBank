@@ -17,8 +17,7 @@ import java.io.File;
 
 
 public class Screenshot {
-    private static final String PATH_SCREENSHOT =
-            ReportFactory.PATH_REPORT + File.separator + "Screenshot";
+    private static final String PATH_SCREENSHOT = ReportFactory.PATH_REPORT + File.separator + "Screenshot";
 
     public static Media capture(WebDriver driver) {
         try {

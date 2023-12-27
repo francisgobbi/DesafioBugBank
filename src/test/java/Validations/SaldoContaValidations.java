@@ -4,6 +4,7 @@ import PageObjects.CadastroPage;
 import PageObjects.LoginPage;
 import Framework.Report.Report;
 import Framework.Report.Screenshot;
+import PageObjects.TransferenciaPage;
 import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +13,11 @@ import org.openqa.selenium.WebDriver;
 public class SaldoContaValidations  {
     private WebDriver driver;
     public CadastroPage cadastroPage;
+    private TransferenciaPage transferenciaPage;
     public LoginPage loginPage;
+
+    private TransferenciaRealizadaSucessoValidations transferenciaRealizadaSucessoValidations;
+
     public SaldoContaValidations(WebDriver driver){
         this.driver = driver;
         cadastroPage = new CadastroPage(this.driver);

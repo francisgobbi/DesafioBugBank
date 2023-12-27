@@ -239,6 +239,5 @@ public class TaskCriarContasTransferenciaDeValorEntreContas {
         System.out.println("Numero da Conta : " + loginPage.getNumeroComDigitoConta().getText() );
 
         saldoContaValidations.SaldoContaValidationsOK(emailSegundaConta,senhaSegundaConta);
-        cadastroPage.getBotaoCadastrar().click();
     }
 }

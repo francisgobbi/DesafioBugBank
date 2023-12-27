@@ -16,10 +16,10 @@ public class TestRealizarTransfereciaEntreContas extends TestBase {
     @Test
     public void criarDuasContasComSaldoERealizarTransferenciaDeValorEntreContas() throws Exception {
         try {
-            Report.createTest("Criar duas contas com saldo", ReportType.SINGLE);
+            Report.createTest("Criar duas contas com saldo", ReportType.GROUP);
             Report.createStep("Cadastrar Conta com Saldo");
             transferencia.criarDuasContasComSaldosESalvarOsSeusDados();
-            Report.createTest("Realizar Login", ReportType.SINGLE);
+            Report.createTest("Realizar Login", ReportType.GROUP);
             Report.createStep("Realizar Login Usuário");
             transferencia.realizarLogin();
             Report.createTest("Realizar Trasnferencia", ReportType.GROUP);
