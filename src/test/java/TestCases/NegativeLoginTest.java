@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 
+import static Framework.Browser.TypeBrowser.CHROME;
+
 public class NegativeLoginTest  extends TestBase {
 
     private WebDriver driver = getDriverManager();

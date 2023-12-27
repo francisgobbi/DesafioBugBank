@@ -1,5 +1,6 @@
 package Tasks;
 
+import Framework.Browser.TypeBrowser;
 import Framework.Utils.FakersGenerations;
 import PageObjects.CadastroPage;
 import PageObjects.LoginPage;
@@ -9,6 +10,9 @@ import org.openqa.selenium.WebDriver;
 import Framework.Utils.FilesOperation;
 
 import java.io.IOException;
+
+import static Framework.Browser.DriverManager.getDriver;
+import static Framework.Browser.TypeBrowser.CHROME;
 
 public class TaskCriarContasTransferenciaDeValorEntreContas {
 

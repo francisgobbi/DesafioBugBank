@@ -27,7 +27,7 @@ public class Report {
             ExtentTest child = parentTest.get().createNode(stepName);
             test.set(child);
         } catch (NullPointerException e) {
-            // TODO: handle exception
+            System.out.println("Exception: " + e);
         }
     }
 

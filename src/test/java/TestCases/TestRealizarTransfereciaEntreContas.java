@@ -31,6 +31,7 @@ public class TestRealizarTransfereciaEntreContas extends TestBase {
             Report.createTest("Validar Saida Resultado Trasnferencia", ReportType.GROUP);
             Report.createStep("Validar Saida  Login Resultado Trasnferencia");
             transferencia.validarSaidaDaContaQueRealizouATransferencia();
+
         }catch(Exception e) {
             System.out.println(e.getMessage());
         }
